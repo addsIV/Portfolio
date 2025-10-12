@@ -156,19 +156,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Export to PDF functionality (using browser's print)
     function exportToPDF() {
         const originalTitle = document.title;
-        document.title = 'Lin_Bokai_Resume';
-        
-        // Temporarily hide interactive elements for print
-        const interactiveElements = document.querySelectorAll('.notification');
-        interactiveElements.forEach(el => el.style.display = 'none');
-        
+        const currentLang = document.body.classList.contains('chinese-mode') ? 'zh' : 'en';
+        document.title = currentLang === 'zh' ? '林柏凱_履歷' : 'Po_Kai_Lin_Resume';
+
+        // Hide floating elements during print
+        const floatingElements = document.querySelectorAll('.floating-language-toggle, .floating-pdf-download, .notification');
+        floatingElements.forEach(el => el.style.display = 'none');
+
+        // Add print-specific styles
+        document.body.classList.add('printing');
+
         window.print();
-        
+
         // Restore after print
         setTimeout(() => {
+            floatingElements.forEach(el => {
+                if (el.classList.contains('notification')) {
+                    el.style.display = '';
+                } else {
+                    el.style.display = 'flex';
+                }
+            });
+            document.body.classList.remove('printing');
             document.title = originalTitle;
-            interactiveElements.forEach(el => el.style.display = '');
         }, 1000);
+    }
+
+    // Initialize PDF download functionality
+    const downloadPDFBtn = document.getElementById('downloadPDF');
+    if (downloadPDFBtn) {
+        downloadPDFBtn.addEventListener('click', exportToPDF);
     }
 
     // Add keyboard shortcut for PDF export

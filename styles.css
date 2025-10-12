@@ -162,6 +162,142 @@ body::before {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
+/* Floating PDF Download Button */
+.floating-pdf-download {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.pdf-download-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 25px;
+    padding: 10px 16px;
+    color: #f1f5f9;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.pdf-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    background: rgba(59, 130, 246, 0.9);
+    border-color: rgba(59, 130, 246, 0.5);
+}
+
+.pdf-download-btn i {
+    font-size: 1rem;
+}
+
+body.chinese-mode .pdf-download-btn {
+    background: rgba(26, 11, 46, 0.95);
+    border-color: rgba(139, 92, 246, 0.4);
+}
+
+body.chinese-mode .pdf-download-btn:hover {
+    background: rgba(139, 92, 246, 0.9);
+    border-color: rgba(139, 92, 246, 0.5);
+}
+
+/* Print Styles for PDF Export */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+        line-height: 1.4;
+        margin: 0;
+        padding: 0;
+    }
+
+    body::before,
+    .container::before,
+    .header::before,
+    .header::after {
+        display: none !important;
+    }
+
+    .floating-language-toggle,
+    .floating-pdf-download {
+        display: none !important;
+    }
+
+    .container {
+        background: white !important;
+        border: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: none !important;
+    }
+
+    .header {
+        background: white !important;
+        color: black !important;
+        padding: 20pt !important;
+        border-bottom: 2pt solid #333 !important;
+        page-break-after: avoid;
+    }
+
+    .main-content {
+        background: white !important;
+        padding: 20pt !important;
+        margin: 0 !important;
+    }
+
+    .section-title {
+        color: #333 !important;
+        border-bottom: 1pt solid #333 !important;
+        margin-bottom: 10pt !important;
+        page-break-after: avoid;
+    }
+
+    .experience-item,
+    .education-item,
+    .about-item,
+    .skill-category {
+        background: white !important;
+        border: 1pt solid #ddd !important;
+        margin-bottom: 10pt !important;
+        padding: 10pt !important;
+        page-break-inside: avoid;
+        box-shadow: none !important;
+    }
+
+    .tech-badge,
+    .skill-tag {
+        background: #f0f0f0 !important;
+        color: black !important;
+        border: 1pt solid #ccc !important;
+        box-shadow: none !important;
+    }
+
+    /* Ensure good page breaks */
+    .experience-section,
+    .education-section,
+    .skills-section {
+        page-break-inside: avoid;
+    }
+
+    /* Hide decorative elements */
+    .timeline-marker,
+    .floating-shapes,
+    *::before,
+    *::after {
+        display: none !important;
+    }
+}
+
 .lang-label {
     font-size: 0.85rem;
     font-weight: 500;
@@ -1240,6 +1376,16 @@ input:checked + .slider:before {
         top: 15px;
         right: 15px;
         padding: 8px 12px;
+    }
+
+    .floating-pdf-download {
+        top: 15px;
+        left: 15px;
+    }
+
+    .pdf-download-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
     }
     
     .contact-info {
