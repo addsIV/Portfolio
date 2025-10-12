@@ -1,0 +1,39 @@
+{
+  "name": "resume-website",
+  "version": "1.0.0",
+  "description": "A modern, responsive, and interactive resume website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server .",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "gh-pages -d ."
+  },
+  "keywords": [
+    "resume",
+    "portfolio",
+    "website",
+    "html",
+    "css",
+    "javascript",
+    "responsive",
+    "github-pages"
+  ],
+  "author": "Lin Bokai",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/resume-website.git"
+  },
+  "homepage": "https://yourusername.github.io/resume-website",
+  "devDependencies": {
+    "gh-pages": "^6.0.0",
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

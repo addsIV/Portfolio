@@ -1,0 +1,410 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lin Bokai - Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating elements for visual appeal -->
+    <div class="floating-element code-icon" style="top: 10%; left: 5%; animation-delay: 0s;">
+        <i class="fas fa-laptop-code"></i>
+    </div>
+    <div class="floating-element server-icon" style="top: 20%; right: 10%; animation-delay: 2s;">
+        <i class="fas fa-server"></i>
+    </div>
+    <div class="floating-element api-icon" style="top: 60%; left: 8%; animation-delay: 4s;">
+        <i class="fas fa-code-branch"></i>
+    </div>
+    <div class="floating-element api-icon" style="top: 80%; right: 15%; animation-delay: 1s;">
+        <i class="fas fa-plug"></i>
+    </div>
+    <div class="floating-element cloud-icon" style="top: 40%; right: 5%; animation-delay: 3s;">
+        <i class="fas fa-cloud"></i>
+    </div>
+    <div class="floating-element gear-icon" style="top: 30%; left: 15%; animation-delay: 5s;">
+        <i class="fas fa-cogs"></i>
+    </div>
+    <div class="floating-element network-icon" style="top: 70%; right: 25%; animation-delay: 6s;">
+        <i class="fas fa-network-wired"></i>
+    </div>
+
+    <!-- Floating Language Toggle -->
+    <div class="floating-language-toggle">
+        <span class="lang-label">EN</span>
+        <label class="toggle-switch">
+            <input type="checkbox" id="langToggle">
+            <span class="slider"></span>
+        </label>
+        <span class="lang-label">中文</span>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="profile-section">
+                <div class="profile-info">
+                    <h1 class="name">
+                        <i class="fas fa-user-tie"></i>
+                        Po Kai Lin
+                    </h1>
+                    <h2 class="title">
+                        <i class="fas fa-server"></i>
+                        <span data-en="Backend Developer" data-zh="後端開發者">Backend Developer</span>
+                    </h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>kl13245768@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>(+886) 988-079-258</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Taipei City, Taiwan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-decoration">
+                    <div class="tech-badge">
+                        <i class="fas fa-laptop-code"></i>
+                        <span data-en="5+ Years" data-zh="5年以上">5+ Years</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-server"></i>
+                        <span data-en="Backend" data-zh="後端">Backend</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fab fa-microsoft"></i>
+                        <span>.NET</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- About Section -->
+            <section class="section about-section">
+                <h3 class="section-title">
+                    <i class="fas fa-user-circle"></i>
+                    <span data-en="About Me" data-zh="關於我">About Me</span>
+                </h3>
+
+                <div class="about-item">
+                    <div class="about-header">
+                        <i class="fas fa-code"></i>
+                        <h4 data-en="Professional Overview" data-zh="專業概述">Professional Overview</h4>
+                    </div>
+                    <p data-en="I am a dedicated Backend Developer with 5+ years of experience developing and maintaining scalable systems. I specialize in .NET Core, ASP.NET MVC, Go, and modern web technologies, with expertise in API development, microservices architecture, AWS serverless architecture, and system integration. Throughout my career, I have successfully handled high-traffic applications processing 1M+ daily requests while maintaining optimal performance and reliability."
+                       data-zh="我是一位專業的後端開發者，擁有5年以上開發和維護可擴展系統的經驗。我專精於.NET Core、ASP.NET MVC、Go和現代網路技術，在API開發、微服務架構、AWS無伺服器架構和系統整合方面具有豐富經驗。在我的職業生涯中，我成功處理了每日超過100萬請求的高流量應用程式，同時保持最佳效能和可靠性。">
+                        I am a dedicated Backend Developer with 5+ years of experience developing and maintaining scalable systems.
+                        I specialize in .NET Core, ASP.NET MVC, Go, and modern web technologies, with expertise in API development,
+                        microservices architecture, AWS serverless architecture, and system integration. Throughout my career, I have successfully handled
+                        high-traffic applications processing 1M+ daily requests while maintaining optimal performance and reliability.
+                    </p>
+                </div>
+
+                <div class="about-item">
+                    <div class="about-header">
+                        <i class="fas fa-tools"></i>
+                        <h4 data-en="Technical Expertise" data-zh="技術專長">Technical Expertise</h4>
+                    </div>
+                    <p data-en="My technical expertise spans across C#, Go programming, AWS serverless architecture (Lambda, API Gateway, DynamoDB), database optimization with T-SQL, message queuing systems like RabbitMQ, containerization with Kubernetes, and frontend technologies including Vue.js and AngularJS. I'm passionate about writing clean, maintainable code, implementing automated testing strategies, and delivering robust solutions that drive business growth."
+                       data-zh="我的技術專長涵蓋C#、Go程式設計、AWS無伺服器架構（Lambda、API Gateway、DynamoDB）、T-SQL資料庫優化、RabbitMQ訊息佇列系統、Kubernetes容器化技術，以及Vue.js和AngularJS等前端技術。我熱衷於撰寫乾淨、可維護的程式碼，實施自動化測試策略，並提供推動業務成長的強健解決方案。">
+                        My technical expertise spans across C#, Go programming, AWS serverless architecture (Lambda, API Gateway, DynamoDB),
+                        database optimization with T-SQL, message queuing systems like RabbitMQ, containerization with Kubernetes,
+                        and frontend technologies including Vue.js and AngularJS. I'm passionate about writing clean, maintainable code,
+                        implementing automated testing strategies, and delivering robust solutions that drive business growth.
+                    </p>
+                </div>
+
+                <div class="about-item">
+                    <div class="about-header">
+                        <i class="fas fa-users"></i>
+                        <h4 data-en="Professional Values" data-zh="專業價值觀">Professional Values</h4>
+                    </div>
+                    <p data-en="I thrive in collaborative environments and enjoy mentoring junior developers while continuously learning new technologies to stay at the forefront of backend development. I believe in the power of teamwork, knowledge sharing, and building solutions that not only meet technical requirements but also drive meaningful business impact."
+                       data-zh="我在協作環境中表現出色，喜歡指導初級開發人員，同時持續學習新技術以保持在後端開發領域的領先地位。我相信團隊合作、知識分享的力量，致力於建構不僅滿足技術需求，更能推動有意義商業影響的解決方案。">
+                        I thrive in collaborative environments and enjoy mentoring junior developers while continuously learning
+                        new technologies to stay at the forefront of backend development. I believe in the power of teamwork,
+                        knowledge sharing, and building solutions that not only meet technical requirements but also drive
+                        meaningful business impact.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section experience-section">
+                <h3 class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    <span data-en="Work Experience" data-zh="工作經歷">Work Experience</span>
+                </h3>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h4 class="job-title">
+                            <i class="fas fa-rocket"></i>
+                            <span data-en="Backend Developer" data-zh="後端開發者">Backend Developer</span>
+                        </h4>
+                        <span class="company">
+                            <i class="fas fa-building"></i>
+                            XiTech
+                        </span>
+                        <span class="duration">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span data-en="Jun. 2025 - Present" data-zh="2025年6月 - 至今">Jun. 2025 - Present</span>
+                        </span>
+                    </div>
+                    <ul class="job-responsibilities">
+                        <li data-en="Developing scalable backend systems using Go and AWS serverless architecture" data-zh="使用Go和AWS無伺服器架構開發可擴展的後端系統">Developing scalable backend systems using Go and AWS serverless architecture</li>
+                        <li data-en="Implementing microservices with AWS Lambda, API Gateway, and DynamoDB for high-performance applications" data-zh="使用AWS Lambda、API Gateway和DynamoDB實施微服務，打造高效能應用程式">Implementing microservices with AWS Lambda, API Gateway, and DynamoDB for high-performance applications</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h4 class="job-title">
+                            <i class="fas fa-cogs"></i>
+                            <span data-en="Backend Developer" data-zh="後端開發者">Backend Developer</span>
+                        </h4>
+                        <span class="company">
+                            <i class="fas fa-building"></i>
+                            DigitNet
+                        </span>
+                        <span class="duration">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span data-en="Dec. 2024 - May 2025" data-zh="2024年12月 - 2025年5月">Dec. 2024 - May 2025</span>
+                        </span>
+                    </div>
+                    <ul class="job-responsibilities">
+                        <li data-en="Developed and maintained 20+ RabbitMQ consumers and producers for system integration" data-zh="開發和維護20+個RabbitMQ消費者和生產者，用於系統整合">Developed and maintained 20+ RabbitMQ consumers and producers for system integration</li>
+                        <li data-en="Created detailed SOPs and implemented a workflow to automatically refetch incomplete transaction data, reducing manual investigation time by 50%" data-zh="建立詳細的標準作業程序並實施自動重新獲取不完整交易資料的工作流程，減少50%的人工調查時間">Created detailed SOPs and implemented a workflow to automatically refetch incomplete transaction data, reducing manual investigation time by 50%</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h4 class="job-title">
+                            <i class="fas fa-cogs"></i>
+                            <span data-en="Fullstack Developer" data-zh="全端工程師">Fullstack Developer</span>
+                        </h4>
+                        <span class="company">
+                            <i class="fas fa-building"></i>
+                            TitanSoft
+                        </span>
+                        <span class="duration">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span data-en="Jul. 2022 - Nov. 2024" data-zh="2022年7月 - 2024年11月">Jul. 2022 - Nov. 2024</span>
+                        </span>
+                    </div>
+                    <ul class="job-responsibilities">
+                        <li data-en="Designed and implemented 50+ RESTful and gRPC APIs in .NET Core, handling 1M+ daily requests with 90% uptime" data-zh="設計並實施50+個.NET Core的RESTful和gRPC API，處理每日100萬+請求，維持90%正常運行時間">Designed and implemented 50+ RESTful and gRPC APIs in .NET Core, handling 1M+ daily requests with 90% uptime</li>
+                        <li data-en="Implemented integration tests to improve test coverage by 30%, leveraging SpecFlow for enhanced test readability and maintainability" data-zh="實施整合測試，提升30%測試覆蓋率，運用SpecFlow增強測試可讀性和可維護性">Implemented integration tests to improve test coverage by 30%, leveraging SpecFlow for enhanced test readability and maintainability</li>
+                        <li data-en="Developed and maintained 10+ Vue.js frontend pages" data-zh="開發和維護10+個Vue.js前端頁面">Developed and maintained 10+ Vue.js frontend pages</li>
+                        <li data-en="Implemented over 10 CI/CD automation scripts in yaml for Kubernetes" data-zh="實施10+個Kubernetes的yaml CI/CD自動化腳本">Implemented over 10 CI/CD automation scripts in yaml for Kubernetes</li>
+                        <li data-en="Designed a monitoring solution to ensure correct banner placements and provide immediate issue alerts via Slack, reducing manual checks and response time" data-zh="設計監控解決方案確保橫幅正確放置，並透過Slack提供即時問題警報，減少人工檢查和回應時間">Designed a monitoring solution to ensure correct banner placements and provide immediate issue alerts via Slack, reducing manual checks and response time</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h4 class="job-title">
+                            <i class="fas fa-code-branch"></i>
+                            <span data-en="Backend Developer" data-zh="後端開發者">Backend Developer</span>
+                        </h4>
+                        <span class="company">
+                            <i class="fas fa-building"></i>
+                            Wiser Tech
+                        </span>
+                        <span class="duration">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span data-en="Jul. 2020 - Jun. 2022" data-zh="2020年7月 - 2022年6月">Jul. 2020 - Jun. 2022</span>
+                        </span>
+                    </div>
+                    <ul class="job-responsibilities">
+                        <li data-en="Developed and maintained 10+ RESTful APIs using C#, AngularJS, and JavaScript, enabling customized user functionality and improving integration efficiency" data-zh="使用C#、AngularJS和JavaScript開發和維護10+個RESTful API，實現客製化用戶功能並提升整合效率">Developed and maintained 10+ RESTful APIs using C#, AngularJS, and JavaScript, enabling customized user functionality and improving integration efficiency</li>
+                        <li data-en="Introduced Git as the team's version control system, improving collaboration and reducing integration conflicts by 80%" data-zh="引入Git作為團隊版本控制系統，改善協作並減少80%的整合衝突">Introduced Git as the team's version control system, improving collaboration and reducing integration conflicts by 80%</li>
+                        <li data-en="Maintained and refactored multi-language ERP systems, improving system stability and maintainability" data-zh="維護和重構多語言ERP系統，提升系統穩定性和可維護性">Maintained and refactored multi-language ERP systems, improving system stability and maintainability</li>
+                        <li data-en="Provided optimized T-SQL queries to support users in tracking and auditing critical data, reducing query time by 90%" data-zh="提供優化的T-SQL查詢以支援用戶追蹤和稽核關鍵資料，減少90%的查詢時間">Provided optimized T-SQL queries to support users in tracking and auditing critical data, reducing query time by 90%</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="section education-section">
+                <h3 class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span data-en="Education" data-zh="學歷">Education</span>
+                </h3>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                        <h4 class="degree" data-en="Bachelor of Science in Physics" data-zh="物理學學士學位">Bachelor of Science in Physics</h4>
+                        <span class="school" data-en="SooChow University, Taiwan" data-zh="東吳大學，台灣">SooChow University, Taiwan</span>
+                        <span class="duration" data-en="Graduated: 2020" data-zh="畢業：2020年">Graduated: 2020</span>
+                    </div>
+                    <p class="education-details" data-en="GPA: 4.7/5" data-zh="GPA：4.7/5">
+                        GPA: 4.7/5
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-header">
+                        <h4 class="degree" data-en="Computer Science" data-zh="資訊工程學系">Computer Science</h4>
+                        <span class="school" data-en="National Chiao Tung University, Taiwan" data-zh="國立交通大學，台灣">National Chiao Tung University, Taiwan</span>
+                        <span class="duration" data-en="Attended" data-zh="肄業">Attended</span>
+                    </div>
+                    <p class="education-details" data-en="Earned 100 hours toward a Bachelor's Degree" data-zh="在學士學位修得100學分">
+                        Earned 100 hours toward a Bachelor's Degree
+                    </p>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section skills-section">
+                <h3 class="section-title">
+                    <i class="fas fa-tools"></i>
+                    <span data-en="Technical Skills" data-zh="技術技能">Technical Skills</span>
+                </h3>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4 class="skill-category-title">
+                            <i class="fas fa-laptop-code"></i>
+                            <span data-en="Programming Languages" data-zh="程式語言">Programming Languages</span>
+                        </h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">
+                                <i class="fab fa-microsoft"></i>
+                                C#
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fab fa-golang"></i>
+                                Go
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fab fa-js-square"></i>
+                                JavaScript
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fab fa-js-square"></i>
+                                TypeScript
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-database"></i>
+                                T-SQL
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4 class="skill-category-title">
+                            <i class="fas fa-cogs"></i>
+                            <span data-en="Frameworks & Technologies" data-zh="框架與技術">Frameworks & Technologies</span>
+                        </h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">
+                                <i class="fas fa-globe"></i>
+                                ASP.NET Core
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-layer-group"></i>
+                                ASP.NET MVC
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fab fa-vuejs"></i>
+                                Vue.js
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fab fa-angular"></i>
+                                AngularJS
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-exchange-alt"></i>
+                                RabbitMQ
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-network-wired"></i>
+                                gRPC
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4 class="skill-category-title">
+                            <i class="fas fa-paint-brush"></i>
+                            <span data-en="Frontend & Styling" data-zh="前端與樣式">Frontend & Styling</span>
+                        </h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">
+                                <i class="fab fa-html5"></i>
+                                HTML
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fab fa-css3-alt"></i>
+                                CSS
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-wind"></i>
+                                TailwindCSS
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4 class="skill-category-title">
+                            <i class="fas fa-toolbox"></i>
+                            <span data-en="Tools & Platforms" data-zh="工具與平台">Tools & Platforms</span>
+                        </h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">
+                                <i class="fab fa-aws"></i>
+                                AWS
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fab fa-git-alt"></i>
+                                Git
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-paper-plane"></i>
+                                Postman
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-theater-masks"></i>
+                                Playwright
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-tachometer-alt"></i>
+                                K6
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-check-circle"></i>
+                                SpecFlow
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-terminal"></i>
+                                Vim
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-dharmachakra"></i>
+                                Kubernetes
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
