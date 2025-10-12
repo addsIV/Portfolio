@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林柏凱 / Po Kai Lin - Resume</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: black;
+            background: white;
+            padding: 15pt;
+            max-width: 180mm;
+            margin: 0 auto;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 25pt;
+            padding-bottom: 15pt;
+            border-bottom: 2pt solid black;
+        }
+
+        .name {
+            font-size: 20pt;
+            font-weight: bold;
+            margin-bottom: 8pt;
+        }
+
+        .title {
+            font-size: 14pt;
+            margin-bottom: 12pt;
+            color: #333;
+        }
+
+        .contact-info {
+            font-size: 11pt;
+            line-height: 1.6;
+        }
+
+        .contact-item {
+            display: block;
+            margin: 3pt 0;
+        }
+
+        .tech-badges {
+            margin-top: 10pt;
+            font-size: 11pt;
+        }
+
+        .tech-badge {
+            display: inline;
+        }
+
+        .tech-badge::after {
+            content: " • ";
+            font-weight: bold;
+        }
+
+        .tech-badge:last-child::after {
+            content: "";
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 25pt;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1pt solid black;
+            padding-bottom: 4pt;
+            margin-bottom: 12pt;
+        }
+
+        /* Content Items */
+        .content-item {
+            margin-bottom: 15pt;
+            page-break-inside: avoid;
+        }
+
+        .content-item:not(:last-child) {
+            border-bottom: 1pt solid #ccc;
+            padding-bottom: 12pt;
+        }
+
+        .item-header {
+            margin-bottom: 8pt;
+        }
+
+        .item-title {
+            font-size: 13pt;
+            font-weight: bold;
+            margin-bottom: 4pt;
+        }
+
+        .item-subtitle {
+            font-size: 11pt;
+            margin-bottom: 3pt;
+        }
+
+        .item-duration {
+            font-size: 10pt;
+            color: #666;
+            margin-bottom: 3pt;
+        }
+
+        /* Lists */
+        .responsibilities {
+            list-style: none;
+            padding-left: 0;
+            margin: 8pt 0;
+        }
+
+        .responsibilities li {
+            margin-bottom: 4pt;
+            padding-left: 12pt;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .responsibilities li::before {
+            content: "• ";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .content-text {
+            font-size: 10pt;
+            line-height: 1.4;
+            text-align: justify;
+            margin: 8pt 0;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15pt;
+        }
+
+        .skill-category {
+            margin-bottom: 15pt;
+        }
+
+        .skill-category-title {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-bottom: 6pt;
+        }
+
+        .skills-list {
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+
+        .skill-tag {
+            display: inline;
+        }
+
+        .skill-tag::after {
+            content: " • ";
+            font-weight: bold;
+        }
+
+        .skill-tag:last-child::after {
+            content: "";
+        }
+
+        /* Print optimizations */
+        @media print {
+            body {
+                padding: 15pt;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .content-item {
+                page-break-inside: avoid;
+            }
+        }
+
+        @page {
+            margin: 15pt;
+            size: A4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="name" id="name">林柏凱</div>
+        <div class="title" id="title">後端開發者</div>
+        <div class="contact-info">
+            <div class="contact-item" id="email">Email: kl13245768@gmail.com</div>
+            <div class="contact-item" id="phone">Phone: (+886) 988-079-258</div>
+            <div class="contact-item" id="location">Location: Taipei City, Taiwan</div>
+        </div>
+        <div class="tech-badges">
+            <span class="tech-badge" id="experience-badge">5年以上</span>
+            <span class="tech-badge" id="backend-badge">後端</span>
+            <span class="tech-badge">.NET</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="section">
+        <div class="section-title" id="about-title">關於我</div>
+        
+        <div class="content-item">
+            <div class="item-header">
+                <div class="item-title" id="professional-overview">專業概述</div>
+            </div>
+            <div class="content-text" id="professional-text">
+                我是一位專業的後端開發者，擁有5年以上開發和維護可擴展系統的經驗。我專精於.NET Core、ASP.NET MVC、Go和現代網路技術，在API開發、微服務架構、AWS無伺服器架構和系統整合方面具有豐富經驗。在我的職業生涯中，我成功處理了每日超過100萬請求的高流量應用程式，同時保持最佳效能和可靠性。
+            </div>
+        </div>
+
+        <div class="content-item">
+            <div class="item-header">
+                <div class="item-title" id="technical-expertise">技術專長</div>
+            </div>
+            <div class="content-text" id="technical-text">
+                我的技術專長涵蓋C#、Go程式設計、AWS無伺服器架構（Lambda、API Gateway、DynamoDB）、T-SQL資料庫優化、RabbitMQ訊息佇列系統、Kubernetes容器化技術，以及Vue.js和AngularJS等前端技術。我熱衷於撰寫乾淨、可維護的程式碼，實施自動化測試策略，並提供推動業務成長的強健解決方案。
+            </div>
+        </div>
+
+        <div class="content-item">
+            <div class="item-header">
+                <div class="item-title" id="professional-values">專業價值觀</div>
+            </div>
+            <div class="content-text" id="values-text">
+                我在協作環境中表現出色，喜歡指導初級開發人員，同時持續學習新技術以保持在後端開發領域的領先地位。我相信團隊合作、知識分享的力量，致力於建構不僅滿足技術需求，更能推動有意義商業影響的解決方案。
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <div class="section">
+        <div class="section-title" id="experience-title">工作經歷</div>
+        
+        <div class="content-item">
+            <div class="item-header">
+                <div class="item-title" id="job1-title">後端開發者</div>
+                <div class="item-subtitle">XiTech</div>
+                <div class="item-duration" id="job1-duration">2025年6月 - 至今</div>
+            </div>
+            <ul class="responsibilities">
+                <li id="job1-resp1">使用Go和AWS無伺服器架構開發可擴展的後端系統</li>
+                <li id="job1-resp2">使用AWS Lambda、API Gateway和DynamoDB實施微服務，打造高效能應用程式</li>
+            </ul>
+        </div>
+
+        <div class="content-item">
+            <div class="item-header">
+                <div class="item-title" id="job2-title">後端開發者</div>
+                <div class="item-subtitle">DigitNet</div>
+                <div class="item-duration" id="job2-duration">2024年12月 - 2025年5月</div>
+            </div>
+            <ul class="responsibilities">
+                <li id="job2-resp1">開發和維護20+個RabbitMQ消費者和生產者，用於系統整合</li>
+                <li id="job2-resp2">建立詳細的標準作業程序並實施自動重新獲取不完整交易資料的工作流程，減少50%的人工調查時間</li>
+            </ul>
+        </div>
+
+        <div class="content-item">
+            <div class="item-header">
+                <div class="item-title" id="job3-title">全端工程師</div>
+                <div class="item-subtitle">TitanSoft</div>
+                <div class="item-duration" id="job3-duration">2022年7月 - 2024年11月</div>
+            </div>
+            <ul class="responsibilities">
+                <li id="job3-resp1">設計並實施50+個.NET Core的RESTful和gRPC API，處理每日100萬+請求，維持90%正常運行時間</li>
+                <li id="job3-resp2">實施整合測試，提升30%測試覆蓋率，運用SpecFlow增強測試可讀性和可維護性</li>
+                <li id="job3-resp3">開發和維護10+個Vue.js前端頁面</li>
+                <li id="job3-resp4">實施10+個Kubernetes的yaml CI/CD自動化腳本</li>
+                <li id="job3-resp5">設計監控解決方案確保橫幅正確放置，並透過Slack提供即時問題警報，減少人工檢查和回應時間</li>
+            </ul>
+        </div>
+
+        <div class="content-item">
+            <div class="item-header">
+                <div class="item-title" id="job4-title">後端開發者</div>
+                <div class="item-subtitle">Wiser Tech</div>
+                <div class="item-duration" id="job4-duration">2020年7月 - 2022年6月</div>
+            </div>
+            <ul class="responsibilities">
+                <li id="job4-resp1">使用C#、AngularJS和JavaScript開發和維護10+個RESTful API，實現客製化用戶功能並提升整合效率</li>
+                <li id="job4-resp2">引入Git作為團隊版本控制系統，改善協作並減少80%的整合衝突</li>
+                <li id="job4-resp3">維護和重構多語言ERP系統，提升系統穩定性和可維護性</li>
+                <li id="job4-resp4">提供優化的T-SQL查詢以支援用戶追蹤和稽核關鍵資料，減少90%的查詢時間</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Education Section -->
+    <div class="section">
+        <div class="section-title" id="education-title">學歷</div>
+
+        <div class="content-item">
+            <div class="item-header">
+                <div class="item-title" id="degree1">物理學學士學位</div>
+                <div class="item-subtitle" id="school1">東吳大學，台灣</div>
+                <div class="item-duration" id="grad1">畢業：2020年</div>
+            </div>
+            <div class="content-text">GPA：4.7/5</div>
+        </div>
+
+        <div class="content-item">
+            <div class="item-header">
+                <div class="item-title" id="degree2">資訊工程學系</div>
+                <div class="item-subtitle" id="school2">國立交通大學，台灣</div>
+                <div class="item-duration" id="grad2">肄業</div>
+            </div>
+            <div class="content-text" id="credits">在學士學位修得100學分</div>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="section">
+        <div class="section-title" id="skills-title">技術技能</div>
+
+        <div class="skills-grid">
+            <div class="skill-category">
+                <div class="skill-category-title" id="programming-title">程式語言</div>
+                <div class="skills-list">
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">Go</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">T-SQL</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title" id="frameworks-title">框架與技術</div>
+                <div class="skills-list">
+                    <span class="skill-tag">ASP.NET Core</span>
+                    <span class="skill-tag">ASP.NET MVC</span>
+                    <span class="skill-tag">Vue.js</span>
+                    <span class="skill-tag">AngularJS</span>
+                    <span class="skill-tag">RabbitMQ</span>
+                    <span class="skill-tag">gRPC</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title" id="frontend-title">前端與樣式</div>
+                <div class="skills-list">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">TailwindCSS</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title" id="tools-title">工具與平台</div>
+                <div class="skills-list">
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Postman</span>
+                    <span class="skill-tag">Playwright</span>
+                    <span class="skill-tag">K6</span>
+                    <span class="skill-tag">SpecFlow</span>
+                    <span class="skill-tag">Vim</span>
+                    <span class="skill-tag">Kubernetes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language switching functionality
+        const translations = {
+            en: {
+                name: "Po Kai Lin",
+                title: "Backend Developer",
+                email: "Email: kl13245768@gmail.com",
+                phone: "Phone: (+886) 988-079-258",
+                location: "Location: Taipei City, Taiwan",
+                "experience-badge": "5+ Years",
+                "backend-badge": "Backend",
+                "about-title": "About Me",
+                "professional-overview": "Professional Overview",
+                "professional-text": "I am a dedicated Backend Developer with 5+ years of experience developing and maintaining scalable systems. I specialize in .NET Core, ASP.NET MVC, Go, and modern web technologies, with expertise in API development, microservices architecture, AWS serverless architecture, and system integration. Throughout my career, I have successfully handled high-traffic applications processing 1M+ daily requests while maintaining optimal performance and reliability.",
+                "technical-expertise": "Technical Expertise",
+                "technical-text": "My technical expertise spans across C#, Go programming, AWS serverless architecture (Lambda, API Gateway, DynamoDB), database optimization with T-SQL, message queuing systems like RabbitMQ, containerization with Kubernetes, and frontend technologies including Vue.js and AngularJS. I'm passionate about writing clean, maintainable code, implementing automated testing strategies, and delivering robust solutions that drive business growth.",
+                "professional-values": "Professional Values",
+                "values-text": "I thrive in collaborative environments and enjoy mentoring junior developers while continuously learning new technologies to stay at the forefront of backend development. I believe in the power of teamwork, knowledge sharing, and building solutions that not only meet technical requirements but also drive meaningful business impact.",
+                "experience-title": "Work Experience",
+                "job1-title": "Backend Developer",
+                "job1-duration": "Jun. 2025 - Present",
+                "job1-resp1": "Developing scalable backend systems using Go and AWS serverless architecture",
+                "job1-resp2": "Implementing microservices with AWS Lambda, API Gateway, and DynamoDB for high-performance applications",
+                "job2-title": "Backend Developer",
+                "job2-duration": "Dec. 2024 - May 2025",
+                "job2-resp1": "Developed and maintained 20+ RabbitMQ consumers and producers for system integration",
+                "job2-resp2": "Created detailed SOPs and implemented a workflow to automatically refetch incomplete transaction data, reducing manual investigation time by 50%",
+                "job3-title": "Fullstack Developer",
+                "job3-duration": "Jul. 2022 - Nov. 2024",
+                "job3-resp1": "Designed and implemented 50+ RESTful and gRPC APIs in .NET Core, handling 1M+ daily requests with 90% uptime",
+                "job3-resp2": "Implemented integration tests to improve test coverage by 30%, leveraging SpecFlow for enhanced test readability and maintainability",
+                "job3-resp3": "Developed and maintained 10+ Vue.js frontend pages",
+                "job3-resp4": "Implemented over 10 CI/CD automation scripts in yaml for Kubernetes",
+                "job3-resp5": "Designed a monitoring solution to ensure correct banner placements and provide immediate issue alerts via Slack, reducing manual checks and response time",
+                "job4-title": "Backend Developer",
+                "job4-duration": "Jul. 2020 - Jun. 2022",
+                "job4-resp1": "Developed and maintained 10+ RESTful APIs using C#, AngularJS, and JavaScript, enabling customized user functionality and improving integration efficiency",
+                "job4-resp2": "Introduced Git as the team's version control system, improving collaboration and reducing integration conflicts by 80%",
+                "job4-resp3": "Maintained and refactored multi-language ERP systems, improving system stability and maintainability",
+                "job4-resp4": "Provided optimized T-SQL queries to support users in tracking and auditing critical data, reducing query time by 90%",
+                "education-title": "Education",
+                "degree1": "Bachelor of Science in Physics",
+                "school1": "SooChow University, Taiwan",
+                "grad1": "Graduated: 2020",
+                "degree2": "Computer Science",
+                "school2": "National Chiao Tung University, Taiwan",
+                "grad2": "Attended",
+                "credits": "Earned 100 hours toward a Bachelor's Degree",
+                "skills-title": "Technical Skills",
+                "programming-title": "Programming Languages",
+                "frameworks-title": "Frameworks & Technologies",
+                "frontend-title": "Frontend & Styling",
+                "tools-title": "Tools & Platforms"
+            },
+            zh: {
+                name: "林柏凱",
+                title: "後端開發者",
+                email: "電子郵件: kl13245768@gmail.com",
+                phone: "電話: (+886) 988-079-258",
+                location: "地點: 台北市，台灣",
+                "experience-badge": "5年以上",
+                "backend-badge": "後端",
+                "about-title": "關於我",
+                "professional-overview": "專業概述",
+                "professional-text": "我是一位專業的後端開發者，擁有5年以上開發和維護可擴展系統的經驗。我專精於.NET Core、ASP.NET MVC、Go和現代網路技術，在API開發、微服務架構、AWS無伺服器架構和系統整合方面具有豐富經驗。在我的職業生涯中，我成功處理了每日超過100萬請求的高流量應用程式，同時保持最佳效能和可靠性。",
+                "technical-expertise": "技術專長",
+                "technical-text": "我的技術專長涵蓋C#、Go程式設計、AWS無伺服器架構（Lambda、API Gateway、DynamoDB）、T-SQL資料庫優化、RabbitMQ訊息佇列系統、Kubernetes容器化技術，以及Vue.js和AngularJS等前端技術。我熱衷於撰寫乾淨、可維護的程式碼，實施自動化測試策略，並提供推動業務成長的強健解決方案。",
+                "professional-values": "專業價值觀",
+                "values-text": "我在協作環境中表現出色，喜歡指導初級開發人員，同時持續學習新技術以保持在後端開發領域的領先地位。我相信團隊合作、知識分享的力量，致力於建構不僅滿足技術需求，更能推動有意義商業影響的解決方案。",
+                "experience-title": "工作經歷",
+                "job1-title": "後端開發者",
+                "job1-duration": "2025年6月 - 至今",
+                "job1-resp1": "使用Go和AWS無伺服器架構開發可擴展的後端系統",
+                "job1-resp2": "使用AWS Lambda、API Gateway和DynamoDB實施微服務，打造高效能應用程式",
+                "job2-title": "後端開發者",
+                "job2-duration": "2024年12月 - 2025年5月",
+                "job2-resp1": "開發和維護20+個RabbitMQ消費者和生產者，用於系統整合",
+                "job2-resp2": "建立詳細的標準作業程序並實施自動重新獲取不完整交易資料的工作流程，減少50%的人工調查時間",
+                "job3-title": "全端工程師",
+                "job3-duration": "2022年7月 - 2024年11月",
+                "job3-resp1": "設計並實施50+個.NET Core的RESTful和gRPC API，處理每日100萬+請求，維持90%正常運行時間",
+                "job3-resp2": "實施整合測試，提升30%測試覆蓋率，運用SpecFlow增強測試可讀性和可維護性",
+                "job3-resp3": "開發和維護10+個Vue.js前端頁面",
+                "job3-resp4": "實施10+個Kubernetes的yaml CI/CD自動化腳本",
+                "job3-resp5": "設計監控解決方案確保橫幅正確放置，並透過Slack提供即時問題警報，減少人工檢查和回應時間",
+                "job4-title": "後端開發者",
+                "job4-duration": "2020年7月 - 2022年6月",
+                "job4-resp1": "使用C#、AngularJS和JavaScript開發和維護10+個RESTful API，實現客製化用戶功能並提升整合效率",
+                "job4-resp2": "引入Git作為團隊版本控制系統，改善協作並減少80%的整合衝突",
+                "job4-resp3": "維護和重構多語言ERP系統，提升系統穩定性和可維護性",
+                "job4-resp4": "提供優化的T-SQL查詢以支援用戶追蹤和稽核關鍵資料，減少90%的查詢時間",
+                "education-title": "學歷",
+                "degree1": "物理學學士學位",
+                "school1": "東吳大學，台灣",
+                "grad1": "畢業：2020年",
+                "degree2": "資訊工程學系",
+                "school2": "國立交通大學，台灣",
+                "grad2": "肄業",
+                "credits": "在學士學位修得100學分",
+                "skills-title": "技術技能",
+                "programming-title": "程式語言",
+                "frameworks-title": "框架與技術",
+                "frontend-title": "前端與樣式",
+                "tools-title": "工具與平台"
+            }
+        };
+
+        // Get language from URL parameter or default to Chinese
+        const urlParams = new URLSearchParams(window.location.search);
+        const lang = urlParams.get('lang') || 'zh';
+
+        // Apply translations
+        function applyTranslations(language) {
+            const trans = translations[language];
+            for (const [key, value] of Object.entries(trans)) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = value;
+                }
+            }
+
+            // Update document title
+            document.title = language === 'zh' ? '林柏凱_履歷' : 'Po_Kai_Lin_Resume';
+        }
+
+        // Apply translations on load
+        applyTranslations(lang);
+    </script>
+</body>
+</html>

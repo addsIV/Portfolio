@@ -211,25 +211,41 @@ body.chinese-mode .pdf-download-btn:hover {
 
 /* Print Styles for PDF Export */
 @media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
     body {
         background: white !important;
+        background-image: none !important;
         color: black !important;
-        font-size: 12pt;
-        line-height: 1.4;
-        margin: 0;
-        padding: 0;
+        font-family: Arial, sans-serif !important;
+        font-size: 11pt !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        padding: 15pt !important;
+        width: 100% !important;
+        height: auto !important;
     }
 
+    /* Hide ALL decorative elements */
     body::before,
+    body::after,
     .container::before,
+    .container::after,
     .header::before,
-    .header::after {
-        display: none !important;
-    }
-
+    .header::after,
+    *::before,
+    *::after,
     .floating-language-toggle,
-    .floating-pdf-download {
+    .floating-pdf-download,
+    .floating-shapes,
+    .floating-element,
+    i, .fas, .fab {
         display: none !important;
+        visibility: hidden !important;
     }
 
     .container {
@@ -239,62 +255,574 @@ body.chinese-mode .pdf-download-btn:hover {
         margin: 0 !important;
         padding: 0 !important;
         max-width: none !important;
+        width: 100% !important;
+        display: block !important;
     }
 
+    /* Header Section */
     .header {
         background: white !important;
         color: black !important;
-        padding: 20pt !important;
-        border-bottom: 2pt solid #333 !important;
-        page-break-after: avoid;
+        padding: 0 0 15pt 0 !important;
+        margin-bottom: 20pt !important;
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        border-bottom: 2pt solid black !important;
     }
 
+    /* Name styling */
+    .name,
+    .name span {
+        font-size: 20pt !important;
+        color: black !important;
+        font-weight: bold !important;
+        margin: 0 0 8pt 0 !important;
+        text-align: center !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* Title styling */
+    .title,
+    .title span {
+        font-size: 14pt !important;
+        color: black !important;
+        font-weight: normal !important;
+        margin: 0 0 12pt 0 !important;
+        text-align: center !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .header-decoration {
+        display: block !important;
+        text-align: center !important;
+        margin-top: 10pt !important;
+    }
+
+    .tech-badge {
+        display: inline !important;
+        background: white !important;
+        color: black !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 11pt !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        font-weight: normal !important;
+    }
+
+    .tech-badge::after {
+        content: " • " !important;
+        color: black !important;
+        font-weight: bold !important;
+    }
+
+    .tech-badge:last-child::after {
+        content: "" !important;
+    }
+
+    /* Contact Information */
+    .contact-info {
+        text-align: center !important;
+        display: block !important;
+        margin: 12pt 0 !important;
+        width: 100% !important;
+    }
+
+    .contact-item {
+        text-align: center !important;
+        display: block !important;
+        margin: 4pt 0 !important;
+        font-size: 11pt !important;
+        color: black !important;
+        width: 100% !important;
+    }
+
+    /* Main Content */
     .main-content {
         background: white !important;
-        padding: 20pt !important;
+        padding: 0 !important;
         margin: 0 !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .section {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 25pt !important;
+        page-break-inside: avoid;
     }
 
     .section-title {
-        color: #333 !important;
-        border-bottom: 1pt solid #333 !important;
-        margin-bottom: 10pt !important;
+        color: black !important;
+        font-size: 14pt !important;
+        font-weight: bold !important;
+        border-bottom: 1pt solid black !important;
+        margin: 0 0 12pt 0 !important;
+        padding-bottom: 4pt !important;
         page-break-after: avoid;
+        display: block !important;
+        text-transform: uppercase !important;
     }
 
+    /* Content Items */
     .experience-item,
     .education-item,
-    .about-item,
+    .about-item {
+        background: white !important;
+        border: none !important;
+        margin-bottom: 15pt !important;
+        padding: 0 !important;
+        page-break-inside: avoid;
+        box-shadow: none !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
+    /* Add simple line separators between items */
+    .experience-item:not(:last-child)::after,
+    .education-item:not(:last-child)::after,
+    .about-item:not(:last-child)::after {
+        content: "" !important;
+        display: block !important;
+        width: 100% !important;
+        height: 1pt !important;
+        background: #cccccc !important;
+        margin: 12pt 0 !important;
+    }
+
+    /* Headers */
+    .experience-header,
+    .education-header,
+    .about-header {
+        display: block !important;
+        margin-bottom: 10pt !important;
+        padding-bottom: 0 !important;
+        border-bottom: none !important;
+    }
+
+    .job-title,
+    .degree,
+    .about-header h4 {
+        font-size: 13pt !important;
+        font-weight: bold !important;
+        color: black !important;
+        margin: 0 0 4pt 0 !important;
+        display: block !important;
+    }
+
+    .company,
+    .school,
+    .duration {
+        font-size: 11pt !important;
+        color: black !important;
+        display: block !important;
+        margin-bottom: 3pt !important;
+        font-weight: normal !important;
+    }
+
+    /* Content text */
+    .job-responsibilities,
+    .about-item p,
+    .education-details {
+        font-size: 10pt !important;
+        line-height: 1.4 !important;
+        color: black !important;
+        margin-top: 8pt !important;
+        text-align: left !important;
+    }
+
+    .job-responsibilities {
+        list-style: none !important;
+        padding-left: 0 !important;
+        margin: 8pt 0 !important;
+    }
+
+    .job-responsibilities li {
+        margin-bottom: 4pt !important;
+        padding-left: 12pt !important;
+        position: relative !important;
+        color: black !important;
+        line-height: 1.4 !important;
+    }
+
+    .job-responsibilities li::before {
+        content: "• " !important;
+        position: absolute !important;
+        left: 0 !important;
+        color: black !important;
+        font-weight: bold !important;
+    }
+
+    /* Skills Section */
+    .skills-categories {
+        display: block !important;
+        width: 100% !important;
+    }
+
     .skill-category {
         background: white !important;
-        border: 1pt solid #ddd !important;
-        margin-bottom: 10pt !important;
+        border: 1pt solid black !important;
+        margin-bottom: 12pt !important;
         padding: 10pt !important;
         page-break-inside: avoid;
         box-shadow: none !important;
+        display: block !important;
+        width: 100% !important;
     }
 
-    .tech-badge,
-    .skill-tag {
-        background: #f0f0f0 !important;
+    .skill-category-title {
+        font-size: 13pt !important;
+        font-weight: bold !important;
         color: black !important;
-        border: 1pt solid #ccc !important;
-        box-shadow: none !important;
+        margin: 0 0 8pt 0 !important;
+        display: block !important;
     }
 
-    /* Ensure good page breaks */
+    .skills-list {
+        display: block !important;
+        width: 100% !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Skill tags as simple text with separators */
+    .skill-tag {
+        display: inline !important;
+        background: white !important;
+        color: black !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 11pt !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        line-height: 1.4 !important;
+        font-weight: normal !important;
+    }
+
+    /* Add bullet separators between skill tags */
+    .skill-tag::after {
+        content: " • " !important;
+        color: black !important;
+        font-weight: bold !important;
+    }
+
+    /* Remove bullet from last skill tag in each line */
+    .skill-tag:last-child::after {
+        content: "" !important;
+    }
+
+    /* Ensure all skill categories have identical styling */
+    .skills-section .skill-category:last-child,
+    .skills-section .skill-category:last-of-type,
+    .skill-category:nth-child(3),
+    .skill-category {
+        border: 1pt solid black !important;
+        border-top: 1pt solid black !important;
+        border-right: 1pt solid black !important;
+        border-bottom: 1pt solid black !important;
+        border-left: 1pt solid black !important;
+        margin-bottom: 12pt !important;
+        padding: 10pt !important;
+        background: white !important;
+        display: block !important;
+        width: 100% !important;
+        page-break-inside: avoid;
+        box-sizing: border-box !important;
+    }
+
+    .skills-section .skill-category:last-child .skills-list {
+        display: block !important;
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    .skills-section .skill-category:last-child .skill-tag {
+        display: inline-block !important;
+        vertical-align: top !important;
+        margin: 3pt 4pt 6pt 0 !important;
+        white-space: nowrap !important;
+        background: white !important;
+        border: 1pt solid black !important;
+    }
+
+    /* Clean borderless styling for all skill categories */
+    .skills-categories .skill-category,
+    .skills-section .skill-category,
+    #tools-platforms-section {
+        border: none !important;
+        margin-bottom: 15pt !important;
+        padding: 10pt !important;
+        background: white !important;
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Hide all icons and decorative elements */
+    i, .fas, .fab,
+    .timeline-marker,
+    .floating-shapes,
+    .tech-badge i,
+    .skill-tag i {
+        display: none !important;
+    }
+
+    /* Force all sections to be visible and properly formatted */
+    .about-section,
     .experience-section,
     .education-section,
     .skills-section {
-        page-break-inside: avoid;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: static !important;
+        width: 100% !important;
+        margin-bottom: 20pt !important;
     }
 
-    /* Hide decorative elements */
-    .timeline-marker,
-    .floating-shapes,
-    *::before,
-    *::after {
-        display: none !important;
+    /* Remove any grid or flex layouts */
+    .profile-section,
+    .header-decoration,
+    .about-items,
+    .experience-items,
+    .education-items,
+    .skills-categories {
+        display: block !important;
+        grid-template-columns: none !important;
+        flex-direction: column !important;
+        background: white !important;
+        background-image: none !important;
+    }
+
+    /* Clean typography-based skill categories */
+    .skill-category {
+        border: none !important;
+        background: white !important;
+        background-image: none !important;
+        margin-bottom: 20pt !important;
+        padding: 0 !important;
+        display: block !important;
+        width: 100% !important;
+        page-break-inside: avoid;
+        box-shadow: none !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Skill category titles - no borders */
+    .skill-category-title {
+        font-size: 14pt !important;
+        font-weight: bold !important;
+        color: black !important;
+        margin-bottom: 8pt !important;
+        padding-bottom: 3pt !important;
+        border-bottom: none !important;
+        display: block !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5pt !important;
+    }
+
+    /* Extra specific rule for the last skill category - Tools & Platforms */
+    .skills-section .skills-categories .skill-category:last-child,
+    .skills-section .skill-category:nth-child(3),
+    .skills-section .skill-category:nth-of-type(3),
+    .skill-category:contains("Tools"),
+    .skill-category:contains("工具") {
+        border: 3pt solid black !important;
+        border-bottom: 3pt solid black !important;
+        margin-bottom: 20pt !important;
+        padding: 12pt !important;
+    }
+
+    /* Clean borderless Tools & Platforms section */
+    #tools-platforms-section {
+        border: none !important;
+        margin-bottom: 15pt !important;
+        padding: 10pt !important;
+        background: white !important;
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Backup rule for print */
+    @page {
+        margin: 20pt;
+    }
+
+    /* Force print styles */
+    html, body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+
+
+
+
+    /* Ensure consistent width and styling for all skill categories */
+    @media print {
+        /* Clean borderless design for all skill categories */
+        .skill-category,
+        .skills-section .skill-category,
+        #tools-platforms-section {
+            border: none !important;
+            margin-bottom: 15pt !important;
+            padding: 10pt !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            background: white !important;
+            display: block !important;
+            page-break-inside: avoid !important;
+        }
+
+        /* Ensure all sections are visible */
+        .skills-section,
+        .skills-categories {
+            display: block !important;
+            width: 100% !important;
+        }
+
+        /* COMPREHENSIVE border removal - ALL elements that could have borders */
+        .skill-category,
+        .skill-tag,
+        .experience-item,
+        .education-item,
+        .about-item,
+        .company,
+        .school,
+        .university,
+        .duration,
+        .job-title,
+        .degree-title,
+        .tech-badge,
+        .contact-item,
+        .section-title,
+        .experience-header,
+        .education-header,
+        .about-header,
+        .job-responsibilities,
+        .about-item p,
+        span[data-en],
+        span[data-zh],
+        .profile-section span,
+        .header span,
+        h1, h2, h3, h4, h5, h6,
+        p, div, span, section, header, main {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            border-width: 0 !important;
+            border-style: none !important;
+            border-color: transparent !important;
+            outline-width: 0 !important;
+            outline-style: none !important;
+            outline-color: transparent !important;
+        }
+
+        /* Specific targeting for skill categories and tags */
+        .skill-category,
+        .skill-category:last-child,
+        .skill-category:nth-child(3),
+        .skills-section .skill-category {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Ensure skill tags have no borders */
+        .skill-tag,
+        .skills-list .skill-tag,
+        span.skill-tag {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* ULTIMATE BORDER REMOVAL - Every possible selector */
+        .skill-category,
+        .skills-section .skill-category,
+        .skills-categories .skill-category,
+        .skill-category:first-child,
+        .skill-category:nth-child(2),
+        .skill-category:nth-child(3),
+        .skill-category:last-child,
+        div.skill-category,
+        .skills-section div.skill-category,
+        .skills-categories div.skill-category {
+            border: none !important;
+            border-width: 0 !important;
+            border-style: none !important;
+            outline: none !important;
+            outline-width: 0 !important;
+            outline-style: none !important;
+            box-shadow: none !important;
+        }
+
+        /* AGGRESSIVE skill tag border removal */
+        .skill-tag,
+        .skills-list .skill-tag,
+        span.skill-tag,
+        .skill-category .skill-tag,
+        .skills-section .skill-tag,
+        .skills-categories .skill-tag,
+        .skills-section .skills-categories .skill-category .skills-list .skill-tag,
+        .skills-section .skills-categories .skill-category:last-child .skills-list .skill-tag,
+        .skills-section .skills-categories .skill-category:nth-child(3) .skills-list .skill-tag {
+            border: none !important;
+            border-width: 0 !important;
+            border-style: none !important;
+            border-color: transparent !important;
+            outline: none !important;
+            outline-width: 0 !important;
+            outline-style: none !important;
+            outline-color: transparent !important;
+            box-shadow: none !important;
+            background: white !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* Force inline display and bullet separators for skill tags */
+        .skill-tag {
+            display: inline !important;
+            font-size: 11pt !important;
+            color: black !important;
+            font-weight: normal !important;
+            line-height: 1.4 !important;
+        }
+
+        .skill-tag::after {
+            content: " • " !important;
+            color: black !important;
+            font-weight: bold !important;
+        }
+
+        .skill-tag:last-child::after {
+            content: "" !important;
+        }
+    }
+
+    /* Force white background on everything */
+    .main-content,
+    .section,
+    .about-section,
+    .experience-section,
+    .education-section,
+    .skills-section,
+    .about-items,
+    .experience-items,
+    .education-items,
+    .skills-categories {
+        background: white !important;
+        background-image: none !important;
+        background-color: white !important;
     }
 }
 
