@@ -5,6 +5,19 @@
     box-sizing: border-box;
 }
 
+/* Disable any editing hints or tooltips */
+*::before,
+*::after {
+    pointer-events: none;
+}
+
+/* Ensure no contenteditable attributes work */
+[contenteditable] {
+    -webkit-user-modify: read-only !important;
+    -moz-user-modify: read-only !important;
+    user-modify: read-only !important;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
