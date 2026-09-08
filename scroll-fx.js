@@ -229,10 +229,36 @@
 
     /* ---------- 6. header parallax + wandering background icons ---------- */
     function setupParallax() {
+        createFloaters();
         if (reduceMotion) return;
         const header = document.querySelector('.header');
         onScroll((y) => { if (header) header.style.setProperty('--sy', clamp(y, 0, 700)); });
         setupFloaters();
+    }
+
+    const FLOATER_ICONS = [
+        'fas fa-laptop-code', 'fas fa-server', 'fas fa-code-branch', 'fas fa-plug', 'fas fa-cloud',
+        'fas fa-cogs', 'fas fa-network-wired', 'fas fa-database', 'fas fa-terminal', 'fas fa-microchip',
+        'fas fa-bolt', 'fas fa-cube', 'fas fa-code', 'fas fa-sitemap', 'fas fa-shield-alt',
+        'fas fa-rocket', 'fas fa-layer-group', 'fas fa-project-diagram', 'fas fa-exchange-alt',
+        'fab fa-golang', 'fab fa-aws', 'fab fa-docker', 'fab fa-git-alt', 'fab fa-js-square',
+        'fab fa-vuejs', 'fab fa-microsoft', 'fas fa-dharmachakra', 'fas fa-stream',
+    ];
+    function createFloaters() {
+        if (document.querySelector('.floating-element')) return;
+        const rand = (lo, hi) => lo + Math.random() * (hi - lo);
+        const count = window.innerWidth < 768 ? 10 : 22;
+        const icons = FLOATER_ICONS.slice().sort(() => Math.random() - 0.5);
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            el.className = 'floating-element';
+            const size = Math.round(rand(30, 72));
+            el.style.cssText = `left:${rand(2, 92).toFixed(1)}vw; top:${rand(2, 92).toFixed(1)}vh; width:${size}px; height:${size}px; font-size:${Math.round(size * 0.42)}px; animation-delay:${rand(0, 6).toFixed(1)}s; animation-duration:${rand(5, 9).toFixed(1)}s; opacity:${rand(0.35, 0.6).toFixed(2)};`;
+            el.innerHTML = `<i class="${icons[i % icons.length]}"></i>`;
+            frag.appendChild(el);
+        }
+        document.body.prepend(frag);
     }
 
     // Each background icon roams the viewport with a slowly turning heading,

@@ -44,12 +44,12 @@ body.chinese-mode {
 }
 
 body.chinese-mode .container {
-    background: rgba(15, 10, 26, 0.8);
+    background: rgba(15, 10, 26, 0.5);
     border-color: rgba(107, 70, 193, 0.15);
 }
 
 body.chinese-mode .header {
-    background: linear-gradient(135deg, #1e1b3a 0%, #2d1b4e 50%, #1e1b3a 100%);
+    background: linear-gradient(135deg, rgba(30, 27, 58, 0.78) 0%, rgba(45, 27, 78, 0.72) 50%, rgba(30, 27, 58, 0.78) 100%);
 }
 
 body.chinese-mode .floating-language-toggle {
@@ -74,8 +74,8 @@ body::before {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(20px);
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(6px);
     border: 1px solid rgba(148, 163, 184, 0.1);
     border-radius: 24px;
     box-shadow:
@@ -893,7 +893,7 @@ input:checked + .slider:before {
 
 /* Header Styles */
 .header {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%);
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.78) 0%, rgba(51, 65, 85, 0.72) 50%, rgba(30, 41, 59, 0.78) 100%);
     color: #f1f5f9;
     padding: 80px 40px 60px 40px;
     position: relative;
@@ -1067,7 +1067,7 @@ input:checked + .slider:before {
 /* Main Content Styles */
 .main-content {
     padding: 50px;
-    background: rgba(15, 23, 42, 0.5);
+    background: rgba(15, 23, 42, 0.3);
     position: relative;
     z-index: 1;
 }
@@ -2341,17 +2341,12 @@ body.chinese-mode .glass-surface.pdf-download-btn:hover {
     .glass-identity, .glass-surface-svg { display: none !important; }
 }
 
-/* Background icons roam above the content (behind the glass controls) */
+/* Background icons roam on the bottom layer, behind the content card */
 .floating-element {
-    z-index: 2;
-    opacity: 0.24;
-    width: 46px;
-    height: 46px;
-    font-size: 18px;
+    z-index: 0;
     box-shadow: 0 8px 32px rgba(99, 102, 241, 0.35);
 }
 .floating-element:hover {
-    opacity: 0.24;
     transform: none;
 }
 
