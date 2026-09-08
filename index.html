@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="app-version" content="2026.09.08.1726">
+    <meta name="app-version" content="2026.09.08.1746">
     <title>林柏凱 / Po Kai Lin - Resume</title>
-    <link rel="stylesheet" href="styles.css?v=2026.09.08.1726">
+    <link rel="stylesheet" href="styles.css?v=2026.09.08.1746">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -65,12 +65,16 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Taipei City, Taiwan</span>
                         </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/addsIV" target="_blank" rel="noopener">github.com/addsIV</a>
+                        </div>
                     </div>
                 </div>
                 <div class="header-decoration">
                     <div class="tech-badge" data-glass='{"distortionScale":-150,"blur":10}'>
                         <i class="fas fa-laptop-code"></i>
-                        <span data-en="5+ Years" data-zh="5年以上">5+ Years</span>
+                        <span data-en="{{careerBadge}}" data-zh="{{careerBadge}}" title="Since Jul 2020">{{careerBadge}}</span>
                     </div>
                     <div class="tech-badge" data-glass='{"distortionScale":-150,"blur":10}'>
                         <i class="fas fa-server"></i>
@@ -98,9 +102,9 @@
                         <i class="fas fa-code"></i>
                         <h4 data-en="Professional Overview" data-zh="專業概述">Professional Overview</h4>
                     </div>
-                    <p data-en="I am a dedicated Backend Developer with 5+ years of experience developing and maintaining scalable systems. I specialize in .NET Core, ASP.NET MVC, Go, and modern web technologies, with expertise in API development, microservices architecture, AWS serverless architecture, and system integration. Throughout my career, I have successfully handled high-traffic applications processing 1M+ daily requests while maintaining optimal performance and reliability."
-                       data-zh="我是一位專業的後端開發者，擁有5年以上開發和維護可擴展系統的經驗。我專精於.NET Core、ASP.NET MVC、Go和現代網路技術，在API開發、微服務架構、AWS無伺服器架構和系統整合方面具有豐富經驗。在我的職業生涯中，我成功處理了每日超過100萬請求的高流量應用程式，同時保持最佳效能和可靠性。">
-                        I am a dedicated Backend Developer with 5+ years of experience developing and maintaining scalable systems.
+                    <p data-en="I am a dedicated Backend Developer with {{years}}+ years of experience developing and maintaining scalable systems. I specialize in .NET Core, ASP.NET MVC, Go, and modern web technologies, with expertise in API development, microservices architecture, AWS serverless architecture, and system integration. Throughout my career, I have successfully handled high-traffic applications processing 1M+ daily requests while maintaining optimal performance and reliability."
+                       data-zh="我是一位專業的後端開發者，擁有{{years}}年以上開發和維護可擴展系統的經驗。我專精於.NET Core、ASP.NET MVC、Go和現代網路技術，在API開發、微服務架構、AWS無伺服器架構和系統整合方面具有豐富經驗。在我的職業生涯中，我成功處理了每日超過100萬請求的高流量應用程式，同時保持最佳效能和可靠性。">
+                        I am a dedicated Backend Developer with {{years}}+ years of experience developing and maintaining scalable systems.
                         I specialize in .NET Core, ASP.NET MVC, Go, and modern web technologies, with expertise in API development,
                         microservices architecture, AWS serverless architecture, and system integration. Throughout my career, I have successfully handled
                         high-traffic applications processing 1M+ daily requests while maintaining optimal performance and reliability.
@@ -126,8 +130,8 @@
                         <i class="fas fa-users"></i>
                         <h4 data-en="Professional Values" data-zh="專業價值觀">Professional Values</h4>
                     </div>
-                    <p data-en="I thrive in collaborative environments and enjoy mentoring junior developers while continuously learning new technologies to stay at the forefront of backend development. I believe in the power of teamwork, knowledge sharing, and building solutions that not only meet technical requirements but also drive meaningful business impact."
-                       data-zh="我在協作環境中表現出色，喜歡指導初級開發人員，同時持續學習新技術以保持在後端開發領域的領先地位。我相信團隊合作、知識分享的力量，致力於建構不僅滿足技術需求，更能推動有意義商業影響的解決方案。">
+                    <p data-en="I thrive in collaborative environments and enjoy mentoring junior developers while continuously learning new technologies to stay at the forefront of backend development. I believe in the power of teamwork, knowledge sharing, and building solutions that not only meet technical requirements but also drive meaningful business impact. I approach AI-assisted development with an open mind and a rigorous hand: I use it aggressively to move faster, but every generated change is reviewed, tested, and understood before it ships."
+                       data-zh="我在協作環境中表現出色，喜歡指導初級開發人員，同時持續學習新技術以保持在後端開發領域的領先地位。我相信團隊合作、知識分享的力量，致力於建構不僅滿足技術需求，更能推動有意義商業影響的解決方案。對 AI 輔助開發，我抱持開放但嚴謹的態度：積極用它加速，但每一段產出的程式碼都要經過審閱、測試並真正理解後才上線。">
                         I thrive in collaborative environments and enjoy mentoring junior developers while continuously learning
                         new technologies to stay at the forefront of backend development. I believe in the power of teamwork,
                         knowledge sharing, and building solutions that not only meet technical requirements but also drive
@@ -156,11 +160,16 @@
                         <span class="duration">
                             <i class="fas fa-calendar-alt"></i>
                             <span data-en="Jun. 2025 - Present" data-zh="2025年6月 - 至今">Jun. 2025 - Present</span>
+                            <span class="job-length" data-from="2025-06" data-to=""></span>
                         </span>
                     </div>
                     <ul class="job-responsibilities">
-                        <li data-en="Developing scalable backend systems using Go and AWS serverless architecture" data-zh="使用Go和AWS無伺服器架構開發可擴展的後端系統">Developing scalable backend systems using Go and AWS serverless architecture</li>
-                        <li data-en="Implementing microservices with AWS Lambda, API Gateway, and DynamoDB for high-performance applications" data-zh="使用AWS Lambda、API Gateway和DynamoDB實施微服務，打造高效能應用程式">Implementing microservices with AWS Lambda, API Gateway, and DynamoDB for high-performance applications</li>
+                        <li data-en="Designed and shipped 20+ real-time game backends in Go on AWS Lambda, API Gateway and DynamoDB, from round lifecycle to transaction and platform integration" data-zh="以 Go 在 AWS Lambda、API Gateway、DynamoDB 上設計並上線 20+ 款即時遊戲後端，涵蓋回合流程、交易與平台整合">Designed and shipped 20+ real-time game backends in Go on AWS Lambda, API Gateway and DynamoDB, from round lifecycle to transaction and platform integration</li>
+                        <li data-en="Managed Dev/STG/Prod infrastructure as code with Terraform, including container images and ECS-hosted real-time multiplayer game engines over WebSocket" data-zh="以 Terraform 管理 Dev/STG/Prod 多環境基礎設施，含容器映像與 ECS 上以 WebSocket 運作的即時多人遊戲引擎">Managed Dev/STG/Prod infrastructure as code with Terraform, including container images and ECS-hosted real-time multiplayer game engines over WebSocket</li>
+                        <li data-en="Built automated integration test suites orchestrated by AWS Step Functions plus a custom Postman-collection runner, executed on every deploy" data-zh="建置以 AWS Step Functions 編排的自動化整合測試與自製 Postman collection 執行器，每次部署自動執行">Built automated integration test suites orchestrated by AWS Step Functions plus a custom Postman-collection runner, executed on every deploy</li>
+                        <li data-en="Set up observability with Grafana/Loki and OpenSearch, and built an AI log analyzer (AWS Bedrock + Claude) that triages production errors to Slack every 3 hours" data-zh="以 Grafana/Loki 與 OpenSearch 建立可觀測性，並開發 AI 日誌分析器（AWS Bedrock + Claude），每 3 小時將 Prod 錯誤分類推送至 Slack">Set up observability with Grafana/Loki and OpenSearch, and built an AI log analyzer (AWS Bedrock + Claude) that triages production errors to Slack every 3 hours</li>
+                        <li data-en="Load-tested and hardened a large-scale multiplayer real-time engine, eliminating a round-overlap race with lease-based locking" data-zh="對大型多人即時遊戲引擎進行壓測與強化，以 lease 鎖消除回合重疊的競態問題">Load-tested and hardened a large-scale multiplayer real-time engine, eliminating a round-overlap race with lease-based locking</li>
+                        <li data-en="Introduced AI-assisted development: codified new-game scaffolding and PR-review triage as reusable Claude Code skills, making delivery repeatable across the team" data-zh="導入 AI 輔助開發：將新遊戲專案範本與 PR review 分流做成可重用的 Claude Code skills，讓團隊交付流程可重複">Introduced AI-assisted development: codified new-game scaffolding and PR-review triage as reusable Claude Code skills, making delivery repeatable across the team</li>
                     </ul>
                 </div>
 
@@ -177,6 +186,7 @@
                         <span class="duration">
                             <i class="fas fa-calendar-alt"></i>
                             <span data-en="Dec. 2024 - May 2025" data-zh="2024年12月 - 2025年5月">Dec. 2024 - May 2025</span>
+                            <span class="job-length" data-from="2024-12" data-to="2025-05"></span>
                         </span>
                     </div>
                     <ul class="job-responsibilities">
@@ -198,10 +208,11 @@
                         <span class="duration">
                             <i class="fas fa-calendar-alt"></i>
                             <span data-en="Jul. 2022 - Nov. 2024" data-zh="2022年7月 - 2024年11月">Jul. 2022 - Nov. 2024</span>
+                            <span class="job-length" data-from="2022-07" data-to="2024-11"></span>
                         </span>
                     </div>
                     <ul class="job-responsibilities">
-                        <li data-en="Designed and implemented 50+ RESTful and gRPC APIs in .NET Core, handling 1M+ daily requests with 90% uptime" data-zh="設計並實施50+個.NET Core的RESTful和gRPC API，處理每日100萬+請求，維持90%正常運行時間">Designed and implemented 50+ RESTful and gRPC APIs in .NET Core, handling 1M+ daily requests with 90% uptime</li>
+                        <li data-en="Designed and implemented 50+ RESTful and gRPC APIs in .NET Core, handling 1M+ daily requests with 99.9% uptime" data-zh="設計並實施50+個.NET Core的RESTful和gRPC API，處理每日100萬+請求，維持99.9%正常運行時間">Designed and implemented 50+ RESTful and gRPC APIs in .NET Core, handling 1M+ daily requests with 99.9% uptime</li>
                         <li data-en="Implemented integration tests to improve test coverage by 30%, leveraging SpecFlow for enhanced test readability and maintainability" data-zh="實施整合測試，提升30%測試覆蓋率，運用SpecFlow增強測試可讀性和可維護性">Implemented integration tests to improve test coverage by 30%, leveraging SpecFlow for enhanced test readability and maintainability</li>
                         <li data-en="Developed and maintained 10+ Vue.js frontend pages" data-zh="開發和維護10+個Vue.js前端頁面">Developed and maintained 10+ Vue.js frontend pages</li>
                         <li data-en="Implemented over 10 CI/CD automation scripts in yaml for Kubernetes" data-zh="實施10+個Kubernetes的yaml CI/CD自動化腳本">Implemented over 10 CI/CD automation scripts in yaml for Kubernetes</li>
@@ -222,6 +233,7 @@
                         <span class="duration">
                             <i class="fas fa-calendar-alt"></i>
                             <span data-en="Jul. 2020 - Jun. 2022" data-zh="2020年7月 - 2022年6月">Jul. 2020 - Jun. 2022</span>
+                            <span class="job-length" data-from="2020-07" data-to="2022-06"></span>
                         </span>
                     </div>
                     <ul class="job-responsibilities">
@@ -230,6 +242,82 @@
                         <li data-en="Maintained and refactored multi-language ERP systems, improving system stability and maintainability" data-zh="維護和重構多語言ERP系統，提升系統穩定性和可維護性">Maintained and refactored multi-language ERP systems, improving system stability and maintainability</li>
                         <li data-en="Provided optimized T-SQL queries to support users in tracking and auditing critical data, reducing query time by 90%" data-zh="提供優化的T-SQL查詢以支援用戶追蹤和稽核關鍵資料，減少90%的查詢時間">Provided optimized T-SQL queries to support users in tracking and auditing critical data, reducing query time by 90%</li>
                     </ul>
+                </div>
+            </section>
+
+            <!-- Side Projects Section -->
+            <section class="section projects-section">
+                <h3 class="section-title">
+                    <i class="fas fa-lightbulb"></i>
+                    <span data-en="Side Projects" data-zh="個人專案">Side Projects</span>
+                </h3>
+
+                <div class="experience-item project-item">
+                    <div class="experience-header">
+                        <h4 class="job-title">
+                            <i class="fas fa-desktop"></i>
+                            <span data-en="LanMirror" data-zh="LanMirror">LanMirror</span>
+                        </h4>
+                        <a class="company project-link" href="https://github.com/addsIV/LanMirror" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i>
+                            github.com/addsIV/LanMirror
+                        </a>
+                    </div>
+                    <p class="project-description" data-en="LAN screen mirroring from Mac to any browser over WebRTC (VP9, 40 Mbps, low latency), packaged as a signed Electron app. Built to replace a subscription tool for the team." data-zh="以 WebRTC 將 Mac 畫面鏡像到區網內任何瀏覽器（VP9、40 Mbps、低延遲），打包成已簽章的 Electron app，用來取代需訂閱的工具。">LAN screen mirroring from Mac to any browser over WebRTC (VP9, 40 Mbps, low latency), packaged as a signed Electron app. Built to replace a subscription tool for the team.</p>
+                    <div class="project-tags">
+                        <span class="skill-tag">Electron</span>
+                        <span class="skill-tag">WebRTC</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                </div>
+
+                <div class="experience-item project-item">
+                    <div class="experience-header">
+                        <h4 class="job-title">
+                            <i class="fas fa-code-branch"></i>
+                            <span data-en="GitVine" data-zh="GitVine">GitVine</span>
+                        </h4>
+                    </div>
+                    <p class="project-description" data-en="A GitKraken-style Git GUI built on Electron and the git CLI, with a self-screenshot mode for automated visual testing." data-zh="以 Electron 與 git CLI 打造的 GitKraken 風格 Git GUI，內建自我截圖模式做自動化視覺測試。">A GitKraken-style Git GUI built on Electron and the git CLI, with a self-screenshot mode for automated visual testing.</p>
+                    <div class="project-tags">
+                        <span class="skill-tag">Electron</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="experience-item project-item">
+                    <div class="experience-header">
+                        <h4 class="job-title">
+                            <i class="fas fa-robot"></i>
+                            <span data-en="Game Automation Bot" data-zh="遊戲自動化機器人">Game Automation Bot</span>
+                        </h4>
+                    </div>
+                    <p class="project-description" data-en="A Node.js automation bot for a mobile strategy game, with a web dashboard, containerised and deployed to AWS ECS." data-zh="手機策略遊戲的 Node.js 自動化機器人，附網頁儀表板，容器化後部署於 AWS ECS。">A Node.js automation bot for a mobile strategy game, with a web dashboard, containerised and deployed to AWS ECS.</p>
+                    <div class="project-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS ECS</span>
+                    </div>
+                </div>
+
+                <div class="experience-item project-item">
+                    <div class="experience-header">
+                        <h4 class="job-title">
+                            <i class="fas fa-id-badge"></i>
+                            <span data-en="This site" data-zh="本站">This site</span>
+                        </h4>
+                        <a class="company project-link" href="https://github.com/addsIV/Portfolio" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i>
+                            github.com/addsIV/Portfolio
+                        </a>
+                    </div>
+                    <p class="project-description" data-en="Bilingual resume with scroll-driven animations and liquid-glass UI, written in plain HTML/CSS/JS and deployed on GitHub Pages." data-zh="中英雙語履歷網站，含捲動動畫與液態玻璃介面，純 HTML/CSS/JS，部署於 GitHub Pages。">Bilingual resume with scroll-driven animations and liquid-glass UI, written in plain HTML/CSS/JS and deployed on GitHub Pages.</p>
+                    <div class="project-tags">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">GitHub Pages</span>
+                    </div>
                 </div>
             </section>
 
@@ -330,6 +418,14 @@
                                 <i class="fas fa-network-wired"></i>
                                 gRPC
                             </span>
+                            <span class="skill-tag">
+                                <i class="fab fa-aws"></i>
+                                AWS Lambda
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-database"></i>
+                                DynamoDB
+                            </span>
                         </div>
                     </div>
 
@@ -392,6 +488,26 @@
                                 <i class="fas fa-dharmachakra"></i>
                                 Kubernetes
                             </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-cubes"></i>
+                                Terraform
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fab fa-docker"></i>
+                                Docker
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-chart-line"></i>
+                                Grafana / Loki
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-search"></i>
+                                OpenSearch
+                            </span>
+                            <span class="skill-tag">
+                                <i class="fas fa-robot"></i>
+                                Claude Code
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -403,12 +519,12 @@
 
         <footer class="site-footer">
             <span class="build-label" data-en="Build" data-zh="版本">Build</span>
-            <span class="build-version" title="Build version">2026.09.08.1726</span>
+            <span class="build-version" title="Build version">2026.09.08.1746</span>
         </footer>
     </div>
 
-    <script src="script.js?v=2026.09.08.1726"></script>
-    <script src="glass-surface.js?v=2026.09.08.1726"></script>
-    <script src="scroll-fx.js?v=2026.09.08.1726"></script>
+    <script src="script.js?v=2026.09.08.1746"></script>
+    <script src="glass-surface.js?v=2026.09.08.1746"></script>
+    <script src="scroll-fx.js?v=2026.09.08.1746"></script>
 </body>
 </html>

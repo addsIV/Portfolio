@@ -1,5 +1,47 @@
 // Resume Interactive Features
+
+// Career length, computed live (month precision) from the first full-time role.
+const CAREER_START = '2020-07';
+function monthsBetween(from, to) {
+    const [fy, fm] = from.split('-').map(Number);
+    const ty = to ? Number(to.split('-')[0]) : new Date().getFullYear();
+    const tm = to ? Number(to.split('-')[1]) : new Date().getMonth() + 1;
+    return Math.max(0, (ty - fy) * 12 + (tm - fm) + (to ? 1 : 0));
+}
+function formatSpan(months, lang) {
+    const y = Math.floor(months / 12), m = months % 12;
+    if (lang === 'zh') return (y ? y + ' 年' : '') + (m ? (y ? ' ' : '') + m + ' 個月' : '') || '未滿 1 個月';
+    const parts = [];
+    if (y) parts.push(y + (y === 1 ? ' yr' : ' yrs'));
+    if (m) parts.push(m + (m === 1 ? ' mo' : ' mos'));
+    return parts.join(' ') || '< 1 mo';
+}
+function careerYears() { return Math.floor(monthsBetween(CAREER_START) / 12); }
+function careerBadge(lang) { return formatSpan(monthsBetween(CAREER_START), lang); }
+window.careerYears = careerYears;
+window.careerBadge = careerBadge;
+
+function applyCareerTokens() {
+    const years = careerYears();
+    document.querySelectorAll('[data-en][data-zh]').forEach((el) => {
+        for (const attr of ['data-en', 'data-zh']) {
+            const v = el.getAttribute(attr);
+            if (!v || !v.includes('{{')) continue;
+            const lang = attr === 'data-zh' ? 'zh' : 'en';
+            el.setAttribute(attr, v.replace(/\{\{years\}\}/g, years).replace(/\{\{careerBadge\}\}/g, careerBadge(lang)));
+        }
+        if (el.textContent.includes('{{')) el.textContent = el.getAttribute('data-en');
+    });
+    document.querySelectorAll('.job-length[data-from]').forEach((el) => {
+        const months = monthsBetween(el.dataset.from, el.dataset.to || '');
+        el.setAttribute('data-en', '· ' + formatSpan(months, 'en'));
+        el.setAttribute('data-zh', '· ' + formatSpan(months, 'zh'));
+        el.textContent = el.getAttribute('data-en');
+    });
+}
 document.addEventListener('DOMContentLoaded', function() {
+    applyCareerTokens();
+
     // Smooth scrolling for internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -237,9 +279,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="pdf-contact-item">${isZh ? '電子郵件' : 'Email'}: kl13245768@gmail.com</div>
                     <div class="pdf-contact-item">${isZh ? '電話' : 'Phone'}: (+886) 988-079-258</div>
                     <div class="pdf-contact-item">${isZh ? '地點' : 'Location'}: ${isZh ? '台北市，台灣' : 'Taipei City, Taiwan'}</div>
+                    <div class="pdf-contact-item">GitHub: github.com/addsIV</div>
                 </div>
                 <div class="pdf-tech-badges">
-                    <span class="pdf-tech-badge">${isZh ? '5年以上' : '5+ Years'}</span>
+                    <span class="pdf-tech-badge">${careerBadge(isZh ? 'zh' : 'en')}</span>
                     <span class="pdf-tech-badge">${isZh ? '後端' : 'Backend'}</span>
                     <span class="pdf-tech-badge">.NET</span>
                 </div>
@@ -255,8 +298,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="pdf-content-text">
                         ${isZh ?
-                            '我是一位專業的後端開發者，擁有5年以上開發和維護可擴展系統的經驗。我專精於.NET Core、ASP.NET MVC、Go和現代網路技術，在API開發、微服務架構、AWS無伺服器架構和系統整合方面具有豐富經驗。在我的職業生涯中，我成功處理了每日超過100萬請求的高流量應用程式，同時保持最佳效能和可靠性。' :
-                            'I am a dedicated Backend Developer with 5+ years of experience developing and maintaining scalable systems. I specialize in .NET Core, ASP.NET MVC, Go, and modern web technologies, with expertise in API development, microservices architecture, AWS serverless architecture, and system integration. Throughout my career, I have successfully handled high-traffic applications processing 1M+ daily requests while maintaining optimal performance and reliability.'
+                            '我是一位專業的後端開發者，擁有${careerYears()}年以上開發和維護可擴展系統的經驗。我專精於.NET Core、ASP.NET MVC、Go和現代網路技術，在API開發、微服務架構、AWS無伺服器架構和系統整合方面具有豐富經驗。在我的職業生涯中，我成功處理了每日超過100萬請求的高流量應用程式，同時保持最佳效能和可靠性。' :
+                            'I am a dedicated Backend Developer with ${careerYears()}+ years of experience developing and maintaining scalable systems. I specialize in .NET Core, ASP.NET MVC, Go, and modern web technologies, with expertise in API development, microservices architecture, AWS serverless architecture, and system integration. Throughout my career, I have successfully handled high-traffic applications processing 1M+ daily requests while maintaining optimal performance and reliability.'
                         }
                     </div>
                 </div>
@@ -279,8 +322,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="pdf-content-text">
                         ${isZh ?
-                            '我在協作環境中表現出色，喜歡指導初級開發人員，同時持續學習新技術以保持在後端開發領域的領先地位。我相信團隊合作、知識分享的力量，致力於建構不僅滿足技術需求，更能推動有意義商業影響的解決方案。' :
-                            'I thrive in collaborative environments and enjoy mentoring junior developers while continuously learning new technologies to stay at the forefront of backend development. I believe in the power of teamwork, knowledge sharing, and building solutions that not only meet technical requirements but also drive meaningful business impact.'
+                            '我在協作環境中表現出色，喜歡指導初級開發人員，同時持續學習新技術以保持在後端開發領域的領先地位。我相信團隊合作、知識分享的力量，致力於建構不僅滿足技術需求，更能推動有意義商業影響的解決方案。對 AI 輔助開發，我抱持開放但嚴謹的態度：積極用它加速，但每一段產出的程式碼都要經過審閱、測試並真正理解後才上線。' :
+                            'I thrive in collaborative environments and enjoy mentoring junior developers while continuously learning new technologies to stay at the forefront of backend development. I believe in the power of teamwork, knowledge sharing, and building solutions that not only meet technical requirements but also drive meaningful business impact. I approach AI-assisted development with an open mind and a rigorous hand: I use it aggressively to move faster, but every generated change is reviewed, tested, and understood before it ships.'
                         }
                     </div>
                 </div>
@@ -297,8 +340,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="pdf-item-duration">${isZh ? '2025年6月 - 至今' : 'Jun. 2025 - Present'}</div>
                     </div>
                     <ul class="pdf-responsibilities">
-                        <li>${isZh ? '使用Go和AWS無伺服器架構開發可擴展的後端系統' : 'Developing scalable backend systems using Go and AWS serverless architecture'}</li>
-                        <li>${isZh ? '使用AWS Lambda、API Gateway和DynamoDB實施微服務，打造高效能應用程式' : 'Implementing microservices with AWS Lambda, API Gateway, and DynamoDB for high-performance applications'}</li>
+                        <li>${isZh ? '以 Go 在 AWS Lambda、API Gateway、DynamoDB 上設計並上線 20+ 款即時遊戲後端，涵蓋回合流程、交易與平台整合' : 'Designed and shipped 20+ real-time game backends in Go on AWS Lambda, API Gateway and DynamoDB, from round lifecycle to transaction and platform integration'}</li>
+                        <li>${isZh ? '以 Terraform 管理 Dev/STG/Prod 多環境基礎設施，含容器映像與 ECS 上以 WebSocket 運作的即時多人遊戲引擎' : 'Managed Dev/STG/Prod infrastructure as code with Terraform, including container images and ECS-hosted real-time multiplayer game engines over WebSocket'}</li>
+                        <li>${isZh ? '建置以 AWS Step Functions 編排的自動化整合測試與自製 Postman collection 執行器，每次部署自動執行' : 'Built automated integration test suites orchestrated by AWS Step Functions plus a custom Postman-collection runner, executed on every deploy'}</li>
+                        <li>${isZh ? '以 Grafana/Loki 與 OpenSearch 建立可觀測性，並開發 AI 日誌分析器（AWS Bedrock + Claude），每 3 小時將 Prod 錯誤分類推送至 Slack' : 'Set up observability with Grafana/Loki and OpenSearch, and built an AI log analyzer (AWS Bedrock + Claude) that triages production errors to Slack every 3 hours'}</li>
+                        <li>${isZh ? '對大型多人即時遊戲引擎進行壓測與強化，以 lease 鎖消除回合重疊的競態問題' : 'Load-tested and hardened a large-scale multiplayer real-time engine, eliminating a round-overlap race with lease-based locking'}</li>
+                        <li>${isZh ? '導入 AI 輔助開發：將新遊戲專案範本與 PR review 分流做成可重用的 Claude Code skills，讓團隊交付流程可重複' : 'Introduced AI-assisted development: codified new-game scaffolding and PR-review triage as reusable Claude Code skills, making delivery repeatable across the team'}</li>
                     </ul>
                 </div>
 
@@ -321,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="pdf-item-duration">${isZh ? '2022年7月 - 2024年11月' : 'Jul. 2022 - Nov. 2024'}</div>
                     </div>
                     <ul class="pdf-responsibilities">
-                        <li>${isZh ? '設計並實施50+個.NET Core的RESTful和gRPC API，處理每日100萬+請求，維持90%正常運行時間' : 'Designed and implemented 50+ RESTful and gRPC APIs in .NET Core, handling 1M+ daily requests with 90% uptime'}</li>
+                        <li>${isZh ? '設計並實施50+個.NET Core的RESTful和gRPC API，處理每日100萬+請求，維持99.9%正常運行時間' : 'Designed and implemented 50+ RESTful and gRPC APIs in .NET Core, handling 1M+ daily requests with 99.9% uptime'}</li>
                         <li>${isZh ? '實施整合測試，提升30%測試覆蓋率，運用SpecFlow增強測試可讀性和可維護性' : 'Implemented integration tests to improve test coverage by 30%, leveraging SpecFlow for enhanced test readability and maintainability'}</li>
                         <li>${isZh ? '開發和維護10+個Vue.js前端頁面' : 'Developed and maintained 10+ Vue.js frontend pages'}</li>
                         <li>${isZh ? '實施10+個Kubernetes的yaml CI/CD自動化腳本' : 'Implemented over 10 CI/CD automation scripts in yaml for Kubernetes'}</li>
@@ -341,6 +388,39 @@ document.addEventListener('DOMContentLoaded', function() {
                         <li>${isZh ? '維護和重構多語言ERP系統，提升系統穩定性和可維護性' : 'Maintained and refactored multi-language ERP systems, improving system stability and maintainability'}</li>
                         <li>${isZh ? '提供優化的T-SQL查詢以支援用戶追蹤和稽核關鍵資料，減少90%的查詢時間' : 'Provided optimized T-SQL queries to support users in tracking and auditing critical data, reducing query time by 90%'}</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="pdf-section">
+                <div class="pdf-section-title">${isZh ? '個人專案' : 'Side Projects'}</div>
+                <div class="pdf-content-item">
+                    <div class="pdf-item-header">
+                        <div class="pdf-item-title">${isZh ? 'LanMirror' : 'LanMirror'} <span style="font-weight:normal;font-size:9pt;color:#555">github.com/addsIV/LanMirror</span></div>
+                    </div>
+                    <div class="pdf-content-text">${isZh ? '以 WebRTC 將 Mac 畫面鏡像到區網內任何瀏覽器（VP9、40 Mbps、低延遲），打包成已簽章的 Electron app，用來取代需訂閱的工具。' : 'LAN screen mirroring from Mac to any browser over WebRTC (VP9, 40 Mbps, low latency), packaged as a signed Electron app. Built to replace a subscription tool for the team.'}</div>
+                    <div class="pdf-content-text" style="color:#555">Electron • WebRTC • Node.js</div>
+                </div>
+                <div class="pdf-content-item">
+                    <div class="pdf-item-header">
+                        <div class="pdf-item-title">${isZh ? 'GitVine' : 'GitVine'}</div>
+                    </div>
+                    <div class="pdf-content-text">${isZh ? '以 Electron 與 git CLI 打造的 GitKraken 風格 Git GUI，內建自我截圖模式做自動化視覺測試。' : 'A GitKraken-style Git GUI built on Electron and the git CLI, with a self-screenshot mode for automated visual testing.'}</div>
+                    <div class="pdf-content-text" style="color:#555">Electron • Git • JavaScript</div>
+                </div>
+                <div class="pdf-content-item">
+                    <div class="pdf-item-header">
+                        <div class="pdf-item-title">${isZh ? '遊戲自動化機器人' : 'Game Automation Bot'}</div>
+                    </div>
+                    <div class="pdf-content-text">${isZh ? '手機策略遊戲的 Node.js 自動化機器人，附網頁儀表板，容器化後部署於 AWS ECS。' : 'A Node.js automation bot for a mobile strategy game, with a web dashboard, containerised and deployed to AWS ECS.'}</div>
+                    <div class="pdf-content-text" style="color:#555">Node.js • Docker • AWS ECS</div>
+                </div>
+                <div class="pdf-content-item">
+                    <div class="pdf-item-header">
+                        <div class="pdf-item-title">${isZh ? '本站' : 'This site'} <span style="font-weight:normal;font-size:9pt;color:#555">github.com/addsIV/Portfolio</span></div>
+                    </div>
+                    <div class="pdf-content-text">${isZh ? '中英雙語履歷網站，含捲動動畫與液態玻璃介面，純 HTML/CSS/JS，部署於 GitHub Pages。' : 'Bilingual resume with scroll-driven animations and liquid-glass UI, written in plain HTML/CSS/JS and deployed on GitHub Pages.'}</div>
+                    <div class="pdf-content-text" style="color:#555">HTML/CSS • JavaScript • GitHub Pages</div>
                 </div>
             </div>
 
@@ -392,6 +472,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span class="pdf-skill-tag">AngularJS</span>
                             <span class="pdf-skill-tag">RabbitMQ</span>
                             <span class="pdf-skill-tag">gRPC</span>
+                            <span class="pdf-skill-tag">AWS Lambda</span>
+                            <span class="pdf-skill-tag">DynamoDB</span>
                         </div>
                     </div>
 
@@ -415,6 +497,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span class="pdf-skill-tag">SpecFlow</span>
                             <span class="pdf-skill-tag">Vim</span>
                             <span class="pdf-skill-tag">Kubernetes</span>
+                            <span class="pdf-skill-tag">Terraform</span>
+                            <span class="pdf-skill-tag">Docker</span>
+                            <span class="pdf-skill-tag">Grafana / Loki</span>
+                            <span class="pdf-skill-tag">OpenSearch</span>
+                            <span class="pdf-skill-tag">Claude Code</span>
                         </div>
                     </div>
                 </div>

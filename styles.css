@@ -2395,3 +2395,37 @@ body.chinese-mode .glass-surface.pdf-download-btn:hover {
 @media print {
     .site-footer { display: none !important; }
 }
+
+/* Job length next to dates, side projects */
+.job-length {
+    color: #94a3b8;
+    font-weight: 400;
+    margin-left: 4px;
+    font-variant-numeric: tabular-nums;
+}
+.project-item .job-title i {
+    color: #a78bfa;
+}
+.project-link {
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+.project-link:hover {
+    color: #c4b5fd;
+    border-color: rgba(167, 139, 250, 0.5);
+}
+.project-description {
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin: 6px 0 14px;
+}
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.project-tags .skill-tag {
+    font-size: 0.78rem;
+    padding: 6px 12px;
+}

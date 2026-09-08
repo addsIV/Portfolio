@@ -18,6 +18,9 @@ html = html.replace(/((?:href|src)="(?!https?:\/\/)[^"?]+\.(?:css|js))(?:\?v=[^"
 html = html.replace(/(<meta name="app-version" content=")[^"]*(")/, `$1${version}$2`);
 html = html.replace(/(<span class="build-version"[^>]*>)[^<]*(<\/span>)/, `$1${version}$2`);
 
-if (html === before) { console.error('stamp-version: nothing changed — placeholders missing?'); process.exit(1); }
+if (html === before) {
+  if (before.includes(`content="${version}"`)) { console.log(`already stamped ${version}`); process.exit(0); }
+  console.error('stamp-version: nothing changed — placeholders missing?'); process.exit(1);
+}
 writeFileSync(file, html);
 console.log(`stamped ${version}`);
