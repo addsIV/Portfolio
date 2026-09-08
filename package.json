@@ -1,7 +1,7 @@
 {
-  "name": "resume-website",
+  "name": "portfolio",
   "version": "1.0.0",
-  "description": "A modern, responsive, and interactive resume website",
+  "description": "Po Kai Lin — bilingual online resume",
   "main": "index.html",
   "scripts": {
     "start": "npx serve .",
@@ -19,13 +19,13 @@
     "responsive",
     "github-pages"
   ],
-  "author": "Lin Bokai",
+  "author": "Po Kai Lin",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/resume-website.git"
+    "url": "https://github.com/addsIV/Portfolio.git"
   },
-  "homepage": "https://yourusername.github.io/resume-website",
+  "homepage": "https://addsiv.github.io/Portfolio",
   "devDependencies": {
     "gh-pages": "^6.0.0",
     "live-server": "^1.2.2",
