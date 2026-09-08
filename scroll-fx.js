@@ -16,6 +16,7 @@
         setupSectionNav();
         setupParallax();
         setupSpotlight();
+        setupIdentityPill();
         startScrollLoop();
     });
 
@@ -233,6 +234,19 @@
         onScroll((y) => {
             if (header) header.style.setProperty('--sy', clamp(y, 0, 700));
             floaters.forEach((f) => { f.style.setProperty('--py', `${-y * parseFloat(f.style.getPropertyValue('--speed'))}px`); });
+        });
+    }
+
+    /* ---------- 8. floating identity pill ---------- */
+    function setupIdentityPill() {
+        const pill = document.querySelector('.glass-identity');
+        const header = document.querySelector('.header');
+        if (!pill || !header) return;
+        const toTop = () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        pill.addEventListener('click', toTop);
+        pill.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toTop(); } });
+        onScroll(() => {
+            pill.classList.toggle('is-shown', header.getBoundingClientRect().bottom < 40);
         });
     }
 
