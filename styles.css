@@ -2184,7 +2184,7 @@ input:checked + .slider:before {
     transform: translateY(calc(var(--sy) * -0.15px)) scale(1.2);
 }
 .floating-element {
-    translate: 0 var(--py, 0px);
+    pointer-events: none;
 }
 
 /* Cursor spotlight */
@@ -2223,7 +2223,6 @@ input:checked + .slider:before {
     .reveal { opacity: 1; transform: none; transition: none; }
     .section-title::after { transform: none; transition: none; }
     .header .profile-section, .header::before { transform: none; opacity: 1; }
-    .floating-element { translate: none; }
 }
 
 @media print {
@@ -2335,4 +2334,41 @@ body.chinese-mode .glass-surface.pdf-download-btn:hover {
 }
 @media print {
     .glass-identity, .glass-surface-svg { display: none !important; }
+}
+
+/* Background icons roam above the content (behind the glass controls) */
+.floating-element {
+    z-index: 2;
+    opacity: 0.24;
+    width: 46px;
+    height: 46px;
+    font-size: 18px;
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.35);
+}
+.floating-element:hover {
+    opacity: 0.24;
+    transform: none;
+}
+
+/* Glass: stronger rim + top specular highlight */
+.glass-surface {
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+        0 1px 0 0 rgba(255, 255, 255, 0.45) inset,
+        0 -1px 0 0 rgba(255, 255, 255, 0.08) inset,
+        0 0 14px 4px rgba(255, 255, 255, 0.10) inset,
+        0 6px 18px rgba(0, 0, 0, 0.35),
+        0 16px 48px rgba(0, 0, 0, 0.25) !important;
+}
+.glass-surface::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        linear-gradient(115deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.06) 38%, transparent 55%),
+        radial-gradient(120% 60% at 50% -10%, rgba(255, 255, 255, 0.22), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
 }

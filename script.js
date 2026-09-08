@@ -98,30 +98,40 @@ document.addEventListener('DOMContentLoaded', function() {
         notification.textContent = message;
         notification.style.cssText = `
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #4A90E2;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
+            bottom: 28px;
+            left: 50%;
+            padding: 12px 22px;
+            border-radius: 999px;
+            color: #f1f5f9;
+            z-index: 1600;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
+            font-weight: 500;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transform: translate(-50%, 16px);
+            transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         `;
+        if (window.GlassSurface) {
+            window.GlassSurface.apply(notification, { distortionScale: -160, blur: 12, backgroundOpacity: 0.14 });
+        } else {
+            notification.style.background = 'rgba(15, 23, 42, 0.92)';
+            notification.style.border = '1px solid rgba(148, 163, 184, 0.3)';
+        }
 
         document.body.appendChild(notification);
 
         // Animate in
-        setTimeout(() => {
-            notification.style.transform = 'translateX(0)';
-        }, 100);
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            notification.style.opacity = '1';
+            notification.style.transform = 'translate(-50%, 0)';
+        }));
 
         // Remove after 3 seconds
         setTimeout(() => {
-            notification.style.transform = 'translateX(100%)';
+            notification.style.opacity = '0';
+            notification.style.transform = 'translate(-50%, 16px)';
             setTimeout(() => {
                 if (notification.parentNode) {
                     notification.parentNode.removeChild(notification);

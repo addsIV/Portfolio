@@ -225,16 +225,53 @@
         });
     }
 
-    /* ---------- 6. header parallax + floating icon drift ---------- */
+    /* ---------- 6. header parallax + wandering background icons ---------- */
     function setupParallax() {
         if (reduceMotion) return;
         const header = document.querySelector('.header');
+        onScroll((y) => { if (header) header.style.setProperty('--sy', clamp(y, 0, 700)); });
+        setupFloaters();
+    }
+
+    // Each background icon roams the viewport with a slowly turning heading,
+    // bounces softly off the edges, and still drifts with scroll (parallax).
+    function setupFloaters() {
         const floaters = [...document.querySelectorAll('.floating-element')];
-        floaters.forEach((f, i) => f.style.setProperty('--speed', (0.05 + (i % 4) * 0.04).toFixed(2)));
-        onScroll((y) => {
-            if (header) header.style.setProperty('--sy', clamp(y, 0, 700));
-            floaters.forEach((f) => { f.style.setProperty('--py', `${-y * parseFloat(f.style.getPropertyValue('--speed'))}px`); });
+        if (floaters.length === 0) return;
+        const rand = (lo, hi) => lo + Math.random() * (hi - lo);
+        const state = floaters.map((el, i) => {
+            const r = el.getBoundingClientRect();
+            return {
+                el, x: 0, y: 0, ox: r.left, oy: r.top, w: r.width, h: r.height,
+                speed: rand(14, 30),                 // px per second
+                heading: rand(0, Math.PI * 2),
+                turn: rand(0.15, 0.4) * (Math.random() < 0.5 ? -1 : 1),
+                phase: rand(0, 100),
+                parallax: 0.05 + (i % 4) * 0.04,
+            };
         });
+        let scrollY = window.scrollY;
+        onScroll((y) => { scrollY = y; });
+
+        let last = performance.now();
+        const step = (now) => {
+            const dt = Math.min(0.05, (now - last) / 1000);
+            last = now;
+            const vw = window.innerWidth, vh = window.innerHeight, margin = 24;
+            for (const s of state) {
+                s.heading += Math.sin(now / 1000 * s.turn + s.phase) * dt * 0.9;
+                s.x += Math.cos(s.heading) * s.speed * dt;
+                s.y += Math.sin(s.heading) * s.speed * dt;
+                const left = s.ox + s.x, top = s.oy + s.y;
+                if (left < margin) { s.x = margin - s.ox; s.heading = Math.PI - s.heading; }
+                if (left + s.w > vw - margin) { s.x = vw - margin - s.w - s.ox; s.heading = Math.PI - s.heading; }
+                if (top < margin) { s.y = margin - s.oy; s.heading = -s.heading; }
+                if (top + s.h > vh - margin) { s.y = vh - margin - s.h - s.oy; s.heading = -s.heading; }
+                s.el.style.translate = `${s.x.toFixed(1)}px ${(s.y - scrollY * s.parallax).toFixed(1)}px`;
+            }
+            requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
     }
 
     /* ---------- 8. floating identity pill ---------- */

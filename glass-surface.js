@@ -9,17 +9,17 @@
         borderWidth: 0.07,      // edge band, fraction of the shorter side
         brightness: 60,         // inner plate lightness (%)
         opacity: 0.93,          // inner plate alpha
-        blur: 11,               // inner plate blur (px) → how far refraction reaches inward
+        blur: 14,               // inner plate blur (px) → how far refraction reaches inward
         displace: 0.6,          // final blur on the refracted result
-        distortionScale: -140,  // displacement strength
+        distortionScale: -220,  // displacement strength
         redOffset: 0,
-        greenOffset: 10,
-        blueOffset: 20,
+        greenOffset: 14,
+        blueOffset: 28,
         xChannel: 'R',
         yChannel: 'G',
         mixBlendMode: 'difference',
-        saturation: 1.4,
-        backgroundOpacity: 0.1,
+        saturation: 1.6,
+        backgroundOpacity: 0.12,
     };
 
     let uid = 0;
