@@ -14,28 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Intersection Observer for animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Observe all sections for scroll animations
-    document.querySelectorAll('.section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
-    });
+    // Scroll reveal animations live in scroll-fx.js
 
     // Avatar functionality removed - no longer needed
 
@@ -466,7 +445,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function toggleLanguage() {
+    function toggleLanguage(silent) {
         // Update all elements with translation data
         const translatableElements = document.querySelectorAll('[data-en][data-zh]');
 
@@ -498,6 +477,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Save language preference
         localStorage.setItem('preferredLanguage', currentLang);
 
+        if (silent) return;
         // Show notification with flag emojis
         const message = currentLang === 'zh' ? '🇹🇼 已切換至繁體中文' : '🇺🇸 Switched to English';
         showNotification(message);
@@ -507,10 +487,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const savedLang = localStorage.getItem('preferredLanguage');
     if (savedLang && savedLang !== currentLang) {
         currentLang = savedLang;
-        toggleLanguage();
+        toggleLanguage(true);
     } else {
         // Initialize label highlighting for default language
-        toggleLanguage();
+        toggleLanguage(true);
     }
 });
 

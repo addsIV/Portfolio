@@ -47,7 +47,7 @@ Bilingual (English / 中文). Switch language with the toggle at the top right, 
 <details>
 <summary>About this site (for the curious)</summary>
 
-Plain HTML, CSS, and JavaScript with no build step. `index.html` is the resume, `resume-pdf.html` is the print layout behind the PDF button, and `.github/workflows/deploy.yml` publishes to GitHub Pages on every push to `main`.
+Plain HTML, CSS, and JavaScript with no build step. `index.html` is the resume, `resume-pdf.html` is the print layout behind the PDF button, `scroll-fx.js` drives the scroll animations, and `.github/workflows/deploy.yml` publishes to GitHub Pages on every push to `main`.
 
 To preview locally:
 

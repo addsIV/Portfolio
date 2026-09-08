@@ -2008,3 +2008,226 @@ input:checked + .slider:before {
         transform: translateX(20px);
     }
 }
+
+/* =========================================================
+   Scroll interactions (scroll-fx.js)
+   ========================================================= */
+
+/* Top progress bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+    transform-origin: left;
+    transform: scaleX(0);
+    z-index: 2000;
+    pointer-events: none;
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+}
+
+/* Staggered reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms);
+    will-change: opacity, transform;
+}
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+.skill-tag.reveal {
+    transform: translateY(14px) scale(0.9);
+}
+.tech-badge.reveal {
+    transform: translateX(24px);
+}
+
+/* Section title underline sweeps in */
+.section-title::after {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+.section-title.is-visible::after {
+    transform: scaleX(1);
+}
+
+/* Metrics that count up */
+.metric {
+    color: #a5b4fc;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.tech-badge .metric {
+    color: inherit;
+}
+
+/* Experience rail */
+.experience-section {
+    position: relative;
+}
+.exp-rail {
+    position: absolute;
+    left: -28px;
+    width: 14px;
+    pointer-events: none;
+}
+.exp-rail-track,
+.exp-rail-fill {
+    position: absolute;
+    left: 6px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    border-radius: 2px;
+}
+.exp-rail-track {
+    background: rgba(148, 163, 184, 0.15);
+}
+.exp-rail-fill {
+    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    transform-origin: top;
+    transform: scaleY(0);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+}
+.exp-rail-dot {
+    position: absolute;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #0f172a;
+    border: 2px solid rgba(148, 163, 184, 0.35);
+    transform: translateY(-50%);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+.exp-rail-dot.is-lit {
+    background: #8b5cf6;
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2), 0 0 14px rgba(139, 92, 246, 0.7);
+    transform: translateY(-50%) scale(1.15);
+}
+.experience-item.is-current {
+    border-color: rgba(139, 92, 246, 0.45);
+}
+.experience-item.is-current::before {
+    box-shadow: 0 0 16px rgba(139, 92, 246, 0.8);
+}
+
+/* Section dot navigation */
+.section-nav {
+    position: fixed;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 1500;
+}
+.section-nav-dot {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(148, 163, 184, 0.5);
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.section-nav-dot:hover,
+.section-nav-dot.is-active {
+    border-color: #a78bfa;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    transform: scale(1.35);
+}
+.section-nav-label {
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translate(6px, -50%);
+    background: rgba(15, 23, 42, 0.95);
+    color: #e2e8f0;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.section-nav-dot:hover .section-nav-label,
+.section-nav-dot:focus-visible .section-nav-label {
+    opacity: 1;
+    transform: translate(0, -50%);
+}
+
+/* Header parallax: hero drifts and fades as you scroll past it */
+.header {
+    --sy: 0;
+}
+.header .profile-section {
+    transform: translateY(calc(var(--sy) * 0.22px));
+    opacity: calc(1 - var(--sy) / 900);
+}
+.header::before {
+    transform: translateY(calc(var(--sy) * -0.15px)) scale(1.2);
+}
+.floating-element {
+    translate: 0 var(--py, 0px);
+}
+
+/* Cursor spotlight */
+.card-spotlight {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(320px circle at var(--mx, -200px) var(--my, -200px),
+        rgba(139, 92, 246, 0.16), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 0;
+}
+.about-item:hover .card-spotlight,
+.experience-item:hover .card-spotlight,
+.education-item:hover .card-spotlight,
+.skill-category:hover .card-spotlight {
+    opacity: 1;
+}
+.about-item > *:not(.card-spotlight),
+.experience-item > *:not(.card-spotlight),
+.education-item > *:not(.card-spotlight),
+.skill-category > *:not(.card-spotlight) {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 900px) {
+    .section-nav { display: none; }
+}
+@media (max-width: 768px) {
+    .exp-rail { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .section-title::after { transform: none; transition: none; }
+    .header .profile-section, .header::before { transform: none; opacity: 1; }
+    .floating-element { translate: none; }
+}
+
+@media print {
+    .scroll-progress, .section-nav, .exp-rail, .card-spotlight { display: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .header .profile-section { transform: none; opacity: 1; }
+}
