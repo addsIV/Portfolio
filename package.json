@@ -7,7 +7,8 @@
     "start": "npx serve .",
     "dev": "npx live-server .",
     "build": "echo 'No build process needed for static site'",
-    "deploy": "gh-pages -d ."
+    "deploy": "gh-pages -d .",
+    "stamp": "node scripts/stamp-version.mjs"
   },
   "keywords": [
     "resume",

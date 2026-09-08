@@ -55,4 +55,10 @@ To preview locally:
 npx serve .
 ```
 
+Before committing, stamp a new build version (it cache-busts the CSS/JS links and updates the version shown in the footer):
+
+```bash
+npm run stamp
+```
+
 </details>

@@ -9,6 +9,8 @@
     const escapeHtml = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
     document.addEventListener('DOMContentLoaded', () => {
+        const v = document.querySelector('meta[name="app-version"]');
+        if (v) console.info('Portfolio build', v.content);
         setupProgressBar();
         setupReveals();
         setupMetrics();

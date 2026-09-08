@@ -1395,7 +1395,8 @@ input:checked + .slider:before {
     left: 0;
     width: 4px;
     height: 100%;
-    background: linear-gradient(135deg, #ef4444, #dc2626);
+    background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 55%, #ec4899 100%);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.45);
 }
 
 .skill-category:hover {
@@ -1416,6 +1417,10 @@ input:checked + .slider:before {
 .skill-category-title::before {
     content: '⚡';
     font-size: 1.2rem;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .skills-list {
@@ -2371,4 +2376,27 @@ body.chinese-mode .glass-surface.pdf-download-btn:hover {
         radial-gradient(120% 60% at 50% -10%, rgba(255, 255, 255, 0.22), transparent 60%);
     pointer-events: none;
     z-index: 0;
+}
+
+/* Footer with build version */
+.site-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    padding: 0 50px 22px;
+    font-size: 0.72rem;
+    color: rgba(148, 163, 184, 0.55);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+}
+.site-footer .build-version {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: rgba(165, 180, 252, 0.7);
+}
+@media (max-width: 768px) {
+    .site-footer { padding: 0 20px 16px; justify-content: center; }
+}
+@media print {
+    .site-footer { display: none !important; }
 }
